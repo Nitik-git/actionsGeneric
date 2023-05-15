@@ -1,3 +1,5 @@
+name: My Github Action
+
 on:
   push:
     branches:
@@ -6,7 +8,19 @@ on:
       - qa3
 
 jobs:
-  print_hello:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "Hello Worrld! from ${{github.ref_name}}"
+      - name: Checkout code
+        run: |
+          echo "running1"
+
+      - name: Setup Node.js
+        run: |
+          echo "running2"
+
+      - name: Deploy to main
+        if: github.ref == 'refs/heads/qa2'
+        run: |
+          echo "hello qa2"
