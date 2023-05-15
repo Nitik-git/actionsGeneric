@@ -1,0 +1,9 @@
+on:
+  push:
+    branches:
+      - qa1
+jobs:
+  print_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello World! from qa1"
