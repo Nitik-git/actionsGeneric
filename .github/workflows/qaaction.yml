@@ -1,7 +1,11 @@
 on:
   push:
     branches:
-      - qa1
+      - ${{env.BRANCH_NAME}}
+
+env:
+  BRANCH_NAME: qa1
+
 jobs:
   print_hello:
     runs-on: ubuntu-latest
