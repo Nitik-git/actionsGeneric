@@ -24,3 +24,7 @@ jobs:
         if: github.ref == 'refs/heads/qa2'
         run: |
           echo "hello qa2"
+
+      - name: Setup run3
+        run: |
+          echo "running3"
