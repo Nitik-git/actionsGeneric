@@ -1,13 +1,12 @@
 on:
   push:
     branches:
-      - ${{env.BRANCH_NAME}}
-
-env:
-  BRANCH_NAME: qa1
+      - qa1
+      - qa2
+      - qa3
 
 jobs:
   print_hello:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello World! from qa1"
+      - run: echo "Hello Worrld! from ${{github.ref_name}}"
