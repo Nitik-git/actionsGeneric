@@ -3,9 +3,10 @@ name: My Github Action
 on:
   push:
     branches:
-      - qa1
-      - qa2
-      - qa3
+      - master
+      # - qa1
+      # - qa2
+      # - qa3
 
 jobs:
   build:

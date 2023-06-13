@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - qa1
 
 env:
   BRANCH_NAME: master
@@ -10,11 +10,14 @@ jobs:
   check_file:
     runs-on: ubuntu-latest
     steps:
-      - run: | 
-            git diff-tree --no-commit-id --name-only -r HEAD | cat > file1.txt
-            
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  print_hello:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Hello World!"
+      - name: fetch svc
+        run: |-
+             git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'   |  cat > file1.txt
+             modified_files=( $( cat file1.txt ) )
+      
+      - name: Update-file
+        run: |-
+            touch helloworld >> ./modified_files[1]/k8s/staging/values.yaml

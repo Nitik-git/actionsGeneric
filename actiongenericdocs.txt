@@ -32,3 +32,11 @@ jobs:
           echo "Invalid service specified!"
           exit 1
         fi
+        
+        
+Bring out the name of modified services
+git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'   |  cat > file1.txt
+
+TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
+
+
