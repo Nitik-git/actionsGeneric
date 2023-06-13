@@ -1,1 +1,1 @@
-run asse
+run asserw
