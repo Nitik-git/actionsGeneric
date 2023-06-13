@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: | 
-            file=$(git diff-tree --no-commit-id --name-only -r HEAD)
+            git diff-tree --no-commit-id --name-only -r HEAD | cat > file1.txt
             
 
   print_hello:
