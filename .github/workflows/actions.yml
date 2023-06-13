@@ -20,4 +20,4 @@ jobs:
       
       - name: Update-file
         run: |-
-            touch helloworld >> ./modified_files[1]/k8s/staging/values.yaml
+            touch helloworld >> ./$modified_files[1]/k8s/staging/values.yaml
