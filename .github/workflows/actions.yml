@@ -2,7 +2,18 @@ on:
   push:
     branches:
       - master
+
+env:
+  BRANCH_NAME: master
+
 jobs:
+  check_file:
+    runs-on: ubuntu-latest
+    steps:
+      - run: | 
+            file=$(git diff-tree --no-commit-id --name-only -r HEAD)
+            
+
   print_hello:
     runs-on: ubuntu-latest
     steps:

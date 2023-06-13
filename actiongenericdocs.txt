@@ -1,0 +1,34 @@
+name: Generic Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  process_service:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        service: [service1, service2, service3]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Process service
+      run: |
+        if [ "${{ matrix.service }}" = "service1" ]; then
+          # Actions for service1
+          echo "Processing service1..."
+        elif [ "${{ matrix.service }}" = "service2" ]; then
+          # Actions for service2
+          echo "Processing service2..."
+        elif [ "${{ matrix.service }}" = "service3" ]; then
+          # Actions for service3
+          echo "Processing service3..."
+        else
+          echo "Invalid service specified!"
+          exit 1
+        fi
