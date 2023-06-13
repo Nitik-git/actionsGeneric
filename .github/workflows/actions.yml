@@ -15,9 +15,9 @@ jobs:
 
       - name: fetch svc
         run: |-
-             git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'   |  cat > file1.txt
-             modified_files=( $( cat file1.txt ) )
+              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
       
       - name: Update-file
         run: |-
-            echo $modified_files[1]
+            
+            echo $TESTING
