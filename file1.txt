@@ -1,4 +1,3 @@
-api/Makefile
+.github/workflows/file1.txt
 api/run.py
-assessment/Makefile
-assessment/run.py
+file1.txt
