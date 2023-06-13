@@ -13,6 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: fetch svcd
+        run: |-
+              echo hii
+
       - name: fetch svc
         run: |-
               TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
