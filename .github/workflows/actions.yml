@@ -22,7 +22,12 @@ jobs:
               # git diff-tree --no-commit-id --name-only -r HEAD
            
               TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
-              echo $TESTING
+              svcArray=(`echo ${TESTING}`)
+
+      - name: update path
+        id: updatepath
+        run: |-
+             cd ./svcArray[1]/k8s/staging/values.yaml
 
       # - name: test git
       #   run: |
