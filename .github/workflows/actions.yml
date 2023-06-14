@@ -29,4 +29,5 @@ jobs:
         run: |-
              svcArray="${{ steps.checklogs.outputs.svcArray }}"
              echo $svcArray[1]
+             echo $svcArray[2]
 
