@@ -1,10 +1,9 @@
+name: makegeneric
+
 on:
   push:
     branches:
       - qa1
-
-env:
-  svcArray: ""
 
 jobs:
   create_array:
