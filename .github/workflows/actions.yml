@@ -15,13 +15,15 @@ jobs:
 
       - name: test git
         run: |
-            files=$(git diff-tree --no-commit-id --name-only -r HEAD)
-            echo "::set-output name=changedFiles::$files"
+           files=$(git diff --name-only HEAD^ HEAD)
+           echo "$files"
             
 
-      - name: fetch svc
-        run: |-
-             changedFiles="${{ steps.fetchFiles.outputs.changedFiles }}"
-             echo "$changedFiles"
+      # - name: fetch svc
+      #   run: |-
+      #        changedFiles="${{ steps.fetchFiles.outputs.changedFiles }}"
+      #        echo "$changedFiles"
       
-
+      # - name: Update-file
+      #   run: |-
+      #       echo $modified_files
