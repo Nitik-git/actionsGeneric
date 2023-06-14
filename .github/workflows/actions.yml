@@ -22,12 +22,13 @@ jobs:
            
               TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
               svcArray=(`echo ${TESTING}`)
-              echo "svcArray" >> $GITHUB_ENV
+              echo "::set-env name=MY_ARRAY::$(svcArray)"
 
       - name: update path
         id: updatepath
+        env: 
+           OUTPUT: ${{ steps.checklogs.outputs.svcArray }}
         run: |-
-             echo $svcArray[1]
              echo $svcArray[2]
             
 
