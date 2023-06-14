@@ -26,13 +26,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target:  ${{ needs.create_array.outputs.list }}
+        target:  [1]
     steps:
       - name: update path
         id: updatepath
         run: |-
-             echo $svcArray
-             echo $svcArray[1]
+             echo ${{ needs.create_array.outputs.list }}
              
 
       
