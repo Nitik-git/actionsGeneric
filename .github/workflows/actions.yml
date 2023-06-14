@@ -9,6 +9,8 @@ env:
 jobs:
   check_file:
     runs-on: ubuntu-latest
+    # env:
+    #   TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'`
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -19,10 +21,9 @@ jobs:
 
       - name: fetch svc
         run: |-
-              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
-              echo $TESTING
+              echo "::set-output name=TESTING::$(git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p')
       
       - name: Update-file
         run: |-
             
-            echo $TESTING
+            echo ${{ steps.setOutput.outputs.TESTING }}
