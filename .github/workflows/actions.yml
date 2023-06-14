@@ -19,10 +19,10 @@ jobs:
         id: checklogs
         run: |-
 
-              git diff-tree --no-commit-id --name-only -r HEAD
+              # git diff-tree --no-commit-id --name-only -r HEAD
            
-              # TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
-              # echo $TESTING
+              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
+              echo $TESTING
 
       # - name: test git
       #   run: |
