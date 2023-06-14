@@ -7,36 +7,36 @@ env:
   svcArray: ""
 
 jobs:
-  check_file:
+  matrixJob:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [ this, that, something ]
+        file: [""]
+
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-           fetch-depth: 10
+           fetch-depth: 10        
 
-      - name: check logs
-        id: checklogs
-        run: |-
+      - name: Get Modified Files
+        id: getModifiedFiles
+        run: |
 
-           
-              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
-              svcArray=(`echo ${TESTING}`) >> $GITHUB_ENV       
-     
-      - name: For
-        run: echo ${{ matrix.target }}
+          files=$(git diff-tree --no-commit-id --name-only -r HEAD)
 
-              
-              
 
-      - name: update path
-        id: updatepath
-        run: |-
-             echo $svcArray
-             echo $svcArray[1]
+          echo "::set-output name=modifiedFiles::$files"
+
+      - name: Use Modified Files
+        run: |
+
+          modifiedFiles="${{ steps.getModifiedFiles.outputs.modifiedFiles }}"
+
+          IFS=$'\n' read -rd '' -a modifiedFilesArray <<< "$modifiedFiles"
+
+          echo "Matrix File: ${{ matrix.file }}"
+          echo "Modified Files: ${modifiedFilesArray[${{ matrix.file }}]}"
              
 
       

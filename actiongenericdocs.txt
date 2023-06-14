@@ -102,4 +102,38 @@ nice
              svcArray="${{ steps.checklogs.outputs.svcArray }}"
              echo $svcArray[1]
              echo $svcArray[2]
-             
+
+-------------------------------------------
+
+  check_file:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [ "this", "that", "something" ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+           fetch-depth: 10
+
+      - name: check logs
+        id: checklogs
+        run: |-
+
+           
+              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
+              svcArray=(`echo ${TESTING}`) >> $GITHUB_ENV       
+     
+      - name: For
+        run: echo ${{ matrix.target }}
+
+              
+              
+
+      - name: update path
+        id: updatepath
+        run: |-
+             echo $svcArray
+             echo $svcArray[1]
+
+-----------------------------------------------------------------------------
