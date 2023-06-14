@@ -20,6 +20,9 @@ jobs:
         run: |-
               TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
               svcArray=(`echo ${TESTING}`)
+              my_array_string=$(IFS="," ; echo "${svcArray[*]}")
+              echo "ns=$my_array_string" >> "$GITHUB_ENV"
+
     outputs:
       myarray: svcArray
     
@@ -28,8 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        file: 
-          - ${{ needs.create_array.outputs.svcArray }}
+        target:  ${{ env.ns }}
     steps:
       - name: update path
         id: updatepath
