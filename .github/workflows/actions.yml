@@ -13,17 +13,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: test git
-        run: |
-           files=$(git log -1 --name-only --pretty=format:)
-           echo "$files"
+      # - name: test git
+      #   run: |
+      #      files=$(git log -1 --name-only --pretty=format:)
+      #      echo "$files"
             
+      - name: Fetch Last Commit
+        id: fetchLastCommit
+        run: |
+        
+          commit=$(git log -1 --pretty=format:%h)
 
-      # - name: fetch svc
-      #   run: |-
-      #        changedFiles="${{ steps.fetchFiles.outputs.changedFiles }}"
-      #        echo "$changedFiles"
-      
-      # - name: Update-file
-      #   run: |-
-      #       echo $modified_files
+          
+          files=$(git show --name-only --pretty=format:%h $commit)
+
+          echo "::set-output name=commitID::$commit"
+          echo "::set-output name=changedFiles::$files"
+
+      - name: Print Last Commit Details
+        run: |
+
+          commitID="${{ steps.fetchLastCommit.outputs.commitID }}"
+          changedFiles="${{ steps.fetchLastCommit.outputs.changedFiles }}"
+          echo "Changed Files:"
+          echo "$changedFiles"
