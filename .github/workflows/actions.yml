@@ -22,7 +22,7 @@ jobs:
               my_array_string=$(IFS="," ; echo "${svcArray[*]}")
 
     outputs:
-      myarray: my_array_string
+      myarray: ${my_array_string}
     
   check_file:
     needs: create_array
