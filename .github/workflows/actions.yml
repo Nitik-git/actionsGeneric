@@ -15,7 +15,7 @@ jobs:
 
       - name: test git
         run: |
-             git branches
+             git branch
              git diff-tree --no-commit-id --name-only -r HEAD
 
 
