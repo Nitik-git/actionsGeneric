@@ -21,7 +21,7 @@ jobs:
 
            
               TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
-              svcArray=(`echo ${TESTING}`)
+              svcArray=(`echo ${TESTING}`) >> $GITHUB_ENV
 
               
               
