@@ -15,7 +15,7 @@ jobs:
 
       - name: test git
         run: |
-           files=$(git diff --name-only HEAD^ HEAD)
+           files=$(git log -1 --name-only --pretty=format:)
            echo "$files"
             
 
