@@ -28,6 +28,6 @@ jobs:
         env: 
            OUTPUT: ${{ steps.checklogs.outputs.svcArray }}
         run: |-
-             echo $OUTPUT[2]
+             echo $OUTPUT
             
 
