@@ -40,3 +40,34 @@ git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq 
 TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
 echo $TESTING
 
+
+
+
+      # - name: test git
+      #   run: |
+      #      files=$(git log -1 --name-only --pretty=format:)
+      #      echo "$files"
+            
+      # - name: Fetch Last Commit
+      #   id: fetchLastCommit
+      #   run: |
+        
+      #     commit=$(git log -1 --pretty=format:%h)
+
+          
+      #     files=$(git show --name-only --pretty=format:%h $commit)
+
+      #     echo "$files"
+
+      
+    # echo "::set-output name=commitID::$commit"
+    # echo "::set-output name=changedFiles::$files"
+
+      # - name: Print Last Commit Details
+      #   run: |
+
+      #     commitID="${{ steps.fetchLastCommit.outputs.commitID }}"
+      #     changedFiles="${{ steps.fetchLastCommit.outputs.changedFiles }}"
+      #     echo "Changed Files:"
+      #     echo "$changedFiles"
+
