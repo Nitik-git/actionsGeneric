@@ -180,3 +180,40 @@ jobs:
              echo $svcArray[1]
 
 -----------------------------------------------------------------------------------
+
+
+------------------------------------------------------------
+jobs:
+  create_array:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+           fetch-depth: 10  
+                       
+      - name: create files array
+        id: createarray
+        run: |-
+              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
+              svcArray=(`echo ${TESTING}`)
+              my_array_string=$(IFS="," ; echo "${svcArray[*]}")
+
+    outputs:
+      myarray: ${my_array_string}
+    
+  check_file:
+    needs: create_array
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:  ${{ needs.create_array.outputs.myarray }}
+    steps:
+      - name: update path
+        id: updatepath
+        run: |-
+             echo $svcArray
+             echo $svcArray[1]
+
+
+---------------------------------------------------------------------------

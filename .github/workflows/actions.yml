@@ -19,18 +19,14 @@ jobs:
         run: |-
               TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
               svcArray=(`echo ${TESTING}`)
-              var = svcArray
-              my_array_string=$(IFS="," ; echo "${svcArray[*]}")
-
-    outputs:
-      myarray: ${{var}} 
+              echo "::set-output name=list::$svcArray"
     
   check_file:
     needs: create_array
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target:  ${{ needs.create_array.outputs.myarray }}
+        target:  ${{ needs.create_array.outputs.list }}
     steps:
       - name: update path
         id: updatepath
