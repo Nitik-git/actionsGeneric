@@ -19,14 +19,15 @@ jobs:
         id: checklogs
         run: |-
 
-              # git diff-tree --no-commit-id --name-only -r HEAD
            
               TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
               svcArray=(`echo ${TESTING}`)
+              echo "::set-output name=svcArray::$svcArray"
 
       - name: update path
         id: updatepath
         run: |-
+             svcArray="${{ steps.checklogs.outputs.svcArray }}"
              cd ./svcArray[1]/k8s/staging/values.yaml
 
       # - name: test git
