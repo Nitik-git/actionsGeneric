@@ -13,6 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: check logs
+        id: fetchLastCommit
+        run: |
+            git log
+
       # - name: test git
       #   run: |
       #      files=$(git log -1 --name-only --pretty=format:)
