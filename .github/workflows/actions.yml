@@ -27,13 +27,16 @@ jobs:
           
           files=$(git show --name-only --pretty=format:%h $commit)
 
-          echo "::set-output name=commitID::$commit"
-          echo "::set-output name=changedFiles::$files"
+          echo "$files"
 
-      - name: Print Last Commit Details
-        run: |
+      
+    # echo "::set-output name=commitID::$commit"
+    # echo "::set-output name=changedFiles::$files"
 
-          commitID="${{ steps.fetchLastCommit.outputs.commitID }}"
-          changedFiles="${{ steps.fetchLastCommit.outputs.changedFiles }}"
-          echo "Changed Files:"
-          echo "$changedFiles"
+      # - name: Print Last Commit Details
+      #   run: |
+
+      #     commitID="${{ steps.fetchLastCommit.outputs.commitID }}"
+      #     changedFiles="${{ steps.fetchLastCommit.outputs.changedFiles }}"
+      #     echo "Changed Files:"
+      #     echo "$changedFiles"
