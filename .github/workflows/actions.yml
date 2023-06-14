@@ -13,6 +13,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: test git
+        run: |
+             git branches
+             git diff-tree --no-commit-id --name-only -r HEAD
+
+
       - name: fetch svc
         run: |-
              git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'   |  cat > file1.txt
