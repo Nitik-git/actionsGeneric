@@ -10,13 +10,13 @@ jobs:
   check_file:
     runs-on: ubuntu-latest
     steps:
-      # - name: Checkout
-      #   uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: check logs
         id: checklogs
         run: |
-            git clone https://github.com/Nitik-git/actionsGeneric.git
+            git fetch origin qa1
             git log
 
       # - name: test git
