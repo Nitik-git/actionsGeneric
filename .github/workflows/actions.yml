@@ -10,6 +10,11 @@ jobs:
   create_array:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+           fetch-depth: 10  
+                       
       - name: create files array
         id: createarray
         run: |-
@@ -26,12 +31,6 @@ jobs:
         file: 
           - ${{ needs.create_array.outputs.svcArray }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-           fetch-depth: 10  
-                       
-
       - name: update path
         id: updatepath
         run: |-
