@@ -19,10 +19,9 @@ jobs:
 
       - name: fetch svc
         run: |-
-              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
+              echo "TESTING=$(git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p)" >> $GITHUB_ENV 
               echo $TESTING
       
       - name: Update-file
         run: |-
-            
-            echo $TESTING
+            echo "${{ env.TESTING }}"
