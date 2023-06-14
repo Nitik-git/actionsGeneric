@@ -71,3 +71,35 @@ echo $TESTING
       #     echo "Changed Files:"
       #     echo "$changedFiles"
 
+
+
+
+
+
+
+
+---------------------------------------------------
+nice
+-----------------------------------------------------
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+           fetch-depth: 10
+
+      - name: check logs
+        id: checklogs
+        run: |-
+
+           
+              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
+              svcArray=(`echo ${TESTING}`)
+              echo "::set-output name=svcArray::$svcArray"
+
+      - name: update path
+        id: updatepath
+        run: |-
+             svcArray="${{ steps.checklogs.outputs.svcArray }}"
+             echo $svcArray[1]
+             echo $svcArray[2]
+             
