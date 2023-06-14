@@ -21,7 +21,7 @@ jobs:
         run: |-
               git branch
               git diff-tree --no-commit-id --name-only -r HEAD
-              echo "TESTING=$(git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p)" >> $GITHUB_ENV 
+              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p` 
               echo $TESTING
       
       - name: Update-file
