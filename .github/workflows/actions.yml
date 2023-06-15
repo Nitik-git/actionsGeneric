@@ -8,6 +8,8 @@ on:
 jobs:
   create_array:
     runs-on: ubuntu-latest
+    outputs:
+      matrix:  ${{steps.createarray.outputs.matrix}}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -19,14 +21,15 @@ jobs:
         run: |-
               TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
               svcArray=(`echo ${TESTING}`)
-              my_array_string=$(IFS="," ; echo "${svcArray[*]}")
+              sudo apt-get install jo
+              echo "::set-output name=matrix::$(jo -a "${svcArray[@]}" )"
     
   check_file:
     needs: create_array
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        foo:  [1,2]                                                                  
+        subdir:    ${{fromJson(needs.set.outputs.matrix)}}                                          
     steps:
       - name: update path
         id: updatepath
