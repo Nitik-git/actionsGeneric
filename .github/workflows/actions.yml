@@ -34,7 +34,7 @@ jobs:
       - name: update path
         id: updatepath
         run: |-
-             echo  ${{fromJson(needs.set.outputs.matrix)}}     
+             echo  ${{fromJson(needs.createarray.outputs.matrix)}}     
              
 
       
