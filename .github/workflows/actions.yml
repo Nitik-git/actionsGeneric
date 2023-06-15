@@ -27,14 +27,14 @@ jobs:
   check_file:
     needs: create_array
     runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     subdir:    ${{fromJson(needs.set.outputs.matrix)}}                                          
+    strategy:
+      matrix:
+        subdir:  ${{fromJson(needs.set.outputs.matrix)}}                                          
     steps:
       - name: update path
         id: updatepath
         run: |-
-               echo "Matrix Value: ${{ fromJson(needs.createarray.outputs.matrix) }}"
+               echo "${{ matrix.value }}"
              
 
       
