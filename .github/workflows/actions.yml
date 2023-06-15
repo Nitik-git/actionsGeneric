@@ -28,7 +28,8 @@ jobs:
     needs: create_array
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{ fromJSON(needs.create_array.outputs.matrix) }}                                           
+      matrix:
+        target: ${{ fromJSON(needs.create_array.outputs.matrix) }}                                           
     steps:
       - name: update path
         id: updatepath
