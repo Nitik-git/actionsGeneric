@@ -42,6 +42,7 @@ jobs:
           echo "${{ matrix.target }}"
           echo ${{ needs.create_array.outputs.matrix }}
           pwd
+          tree
           touch ./${{ matrix.target }}/k8s/staging/application.yaml
 
 
