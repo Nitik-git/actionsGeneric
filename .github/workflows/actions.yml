@@ -28,13 +28,12 @@ jobs:
     needs: create_array
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        subdir:  ${{ fromJSON(needs.create_array.outputs.matrix) }}                                          
+      matrix: ${{ fromJSON(needs.create_array.outputs.matrix) }}                                           
     steps:
       - name: update path
         id: updatepath
         run: |-
-               echo "${{ matrix.subdir }}"
+               echo hi
              
 
       
