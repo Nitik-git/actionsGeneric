@@ -22,15 +22,14 @@ jobs:
               TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
               svcArray=(`echo ${TESTING}`)
               sudo apt-get install jo
-              echo "::set-output name=matrix::$(jo -a "${svcArray[@]}" )"
-              echo "matrix={$(jo -a "${svcArray[@]}" )}" >> $GITHUB_OUTPUT
+              echo "matrix=$(jo -a "${svcArray[@]}" )" >> $GITHUB_OUTPUT
     
   check_file:
     needs: create_array
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        subdir:  ${{ fromJSON(needs.set.outputs.matrix) }}                                          
+        subdir:  ${{ fromJSON(needs.create_array.outputs.matrix) }}                                          
     steps:
       - name: update path
         id: updatepath
