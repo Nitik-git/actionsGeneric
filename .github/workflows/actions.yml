@@ -23,7 +23,7 @@ jobs:
       - name: create files array
         id: createarray
         run: |-
-              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
+              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'  -e '/messaging/p'` 
               svcArray=(`echo ${TESTING}`)
               sudo apt-get install jo
               echo "matrix=$(jo -a "${svcArray[@]}" )" >> $GITHUB_OUTPUT
@@ -48,5 +48,6 @@ jobs:
           pwd
           tree
           touch ./${{ matrix.target }}/k8s/staging/application.yaml
+          tree
 
 
