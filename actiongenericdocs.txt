@@ -43,177 +43,23 @@ echo $TESTING
 
 
 
-      # - name: test git
-      #   run: |
-      #      files=$(git log -1 --name-only --pretty=format:)
-      #      echo "$files"
-            
-      # - name: Fetch Last Commit
-      #   id: fetchLastCommit
-      #   run: |
-        
-      #     commit=$(git log -1 --pretty=format:%h)
-
-          
-      #     files=$(git show --name-only --pretty=format:%h $commit)
-
-      #     echo "$files"
-
-      
-    # echo "::set-output name=commitID::$commit"
-    # echo "::set-output name=changedFiles::$files"
-
-      # - name: Print Last Commit Details
-      #   run: |
-
-      #     commitID="${{ steps.fetchLastCommit.outputs.commitID }}"
-      #     changedFiles="${{ steps.fetchLastCommit.outputs.changedFiles }}"
-      #     echo "Changed Files:"
-      #     echo "$changedFiles"
 
 
+----------------------------------------------------------------------------------------------------------------------------------------
+link : 
+https://docs.github.com/en/actions/using-workflows/reusing-workflows#using-outputs-from-a-reusable-workflow
+https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
 
+Example usage of the jobs context
+https://docs.github.com/en/enterprise-cloud@latest/actions/learn-github-actions/contexts#matrix-context
 
+Defining output for jobs
+https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
 
+Expressions
+https://docs.github.com/en/enterprise-cloud@latest/actions/learn-github-actions/expressions
 
+stackoverflow
+https://stackoverflow.com/questions/65056670/is-it-possible-to-have-a-dynamic-strategy-matrix-in-a-workflow-in-github-actions
 
-
----------------------------------------------------
-nice
------------------------------------------------------
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-           fetch-depth: 10
-
-      - name: check logs
-        id: checklogs
-        run: |-
-
-           
-              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
-              svcArray=(`echo ${TESTING}`)
-              echo "::set-output name=svcArray::$svcArray"
-
-      - name: update path
-        id: updatepath
-        run: |-
-             svcArray="${{ steps.checklogs.outputs.svcArray }}"
-             echo $svcArray[1]
-             echo $svcArray[2]
-
--------------------------------------------
-
-  check_file:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        target: [ "this", "that", "something" ]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-           fetch-depth: 10
-
-      - name: check logs
-        id: checklogs
-        run: |-
-
-           
-              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
-              svcArray=(`echo ${TESTING}`) >> $GITHUB_ENV       
-     
-      - name: For
-        run: echo ${{ matrix.target }}
-
-              
-              
-
-      - name: update path
-        id: updatepath
-        run: |-
-             echo $svcArray
-             echo $svcArray[1]
-
------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-----------------------------------------------
-jobs:
-  create_array:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-           fetch-depth: 10  
-                       
-      - name: create files array
-        id: createarray
-        run: |-
-              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
-              svcArray=(`echo ${TESTING}`)
-              my_array_string=$(IFS="," ; echo "${svcArray[*]}")
-
-    outputs:
-      myarray: echo $my_array_string
-    
-  check_file:
-    needs: create_array
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        target:  ${{ needs.create_array.outputs.myarray }}
-    steps:
-      - name: update path
-        id: updatepath
-        run: |-
-             echo $svcArray
-             echo $svcArray[1]
-
------------------------------------------------------------------------------------
-
-
-------------------------------------------------------------
-jobs:
-  create_array:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-           fetch-depth: 10  
-                       
-      - name: create files array
-        id: createarray
-        run: |-
-              TESTING=`git diff-tree --no-commit-id --name-only -r HEAD | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'` 
-              svcArray=(`echo ${TESTING}`)
-              my_array_string=$(IFS="," ; echo "${svcArray[*]}")
-
-    outputs:
-      myarray: ${my_array_string}
-    
-  check_file:
-    needs: create_array
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        target:  ${{ needs.create_array.outputs.myarray }}
-    steps:
-      - name: update path
-        id: updatepath
-        run: |-
-             echo $svcArray
-             echo $svcArray[1]
-
-
----------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------
