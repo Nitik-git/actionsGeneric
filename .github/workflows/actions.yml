@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: ${{ needs.create_array.outputs.matrix }}                                      
+        target: [api,assessment]                                    
     steps:
       - name: update path
         id: updatepath
