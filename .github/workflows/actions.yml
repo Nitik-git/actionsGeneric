@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        subdir:  ${{fromJson(needs.set.outputs.matrix)}}                                          
+        subdir:  ${{needs.set.outputs.matrix}}                                          
     steps:
       - name: update path
         id: updatepath
