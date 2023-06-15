@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - qa1
+  workflow_call:
+    outputs:
+      matrix:
+        value: ${{ jobs.create_array.outputs.matrix }}
 
 jobs:
   create_array:
@@ -34,7 +38,8 @@ jobs:
       - name: update path
         id: updatepath
         run: |-
-               echo hi
+          echo {{ fromJSON(needs.create_array.outputs.matrix) }} 
+               
              
 
       
