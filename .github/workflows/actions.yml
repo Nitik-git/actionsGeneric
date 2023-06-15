@@ -23,18 +23,19 @@ jobs:
               svcArray=(`echo ${TESTING}`)
               sudo apt-get install jo
               echo "::set-output name=matrix::$(jo -a "${svcArray[@]}" )"
+              echo "matrix={$(jo -a "${svcArray[@]}" )}" >> $GITHUB_OUTPUT
     
   check_file:
     needs: create_array
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        subdir:  ${{needs.set.outputs.matrix}}                                          
+        subdir:  ${{ fromJSON(needs.set.outputs.matrix) }}                                          
     steps:
       - name: update path
         id: updatepath
         run: |-
-               echo "${{ matrix.value }}"
+               echo "${{ matrix.subdir }}"
              
 
       
