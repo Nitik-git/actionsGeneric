@@ -27,7 +27,6 @@ jobs:
               svcArray=(`echo ${TESTING}`)
               sudo apt-get install jo
               echo "matrix=$(jo -a "${svcArray[@]}" )" >> $GITHUB_OUTPUT
-              echo ${{ steps.createarray.outputs.matrix }}
 
     
   check_file:
