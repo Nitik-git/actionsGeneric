@@ -41,7 +41,7 @@ jobs:
         run: |-
           echo "${{ matrix.target }}"
           echo ${{ needs.create_array.outputs.matrix }}
-          cd ./${{ matrix.target }}/k8s/staging
-          touch application.yaml
+          pwd
+          touch ./${{ matrix.target }}/k8s/staging/application.yaml
 
 
