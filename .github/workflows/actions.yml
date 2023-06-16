@@ -3,7 +3,7 @@ name: makegeneric
 on:
   push:
     branches:
-      - qa1
+      - for-worker-svc
   workflow_call:
     outputs:
       matrix:
