@@ -47,7 +47,7 @@ jobs:
           echo ${{ needs.create_array.outputs.matrix }}
           pwd
           tree
-          touch ./${{ matrix.target }}-qa/k8s/staging/application.yaml
+          touch ./${{ matrix.target }}/k8s/staging/application.yaml
           tree
 
 
