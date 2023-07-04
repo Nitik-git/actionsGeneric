@@ -1,9 +1,10 @@
 name: My Github Action
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+  # push:
+  #   branches:
+      # - master
       # - qa1
       # - qa2
       # - qa3
