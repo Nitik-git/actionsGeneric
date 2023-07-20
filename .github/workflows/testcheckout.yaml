@@ -1,0 +1,20 @@
+name: checkout-workflow
+
+on:
+  workflow_dispatch:
+  push:
+    branches: 
+      - test/checkout
+
+jobs:
+  services_list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout for Push
+        if: ${{ startsWith(github.ref, 'refs/heads/') }}
+        uses: actions/checkout@v2
+
+      - name: Display branch name
+        id: branchname
+        run: |-
+          git branch
