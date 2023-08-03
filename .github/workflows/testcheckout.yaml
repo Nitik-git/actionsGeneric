@@ -2,9 +2,9 @@ name: checkout-workflow
 
 on:
   workflow_dispatch:
-  push:
-    branches: 
-      - test/checkout
+  # push:
+  #   branches: 
+  #     - test/checkout
 
 jobs:
   services_list:
