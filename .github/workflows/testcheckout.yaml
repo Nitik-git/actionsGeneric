@@ -4,8 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       serviceCount: 
-        description: "Enter number of node"
+        description: "Enter number of nodes required in services nodepool"
         default: 2
+      githubrunnerCount:
+        description: "Enter number of nodes required in github-runner nodepool"
+        default: 0
   # push:
   #   branches:
   #     - test/checkout
@@ -24,4 +27,5 @@ jobs:
         id: branchname
         run: |-
           git branch
-          echo "Total node ${{ github.event.inputs.serviceCount }}"
+          echo "Total node in services ${{ github.event.inputs.serviceCount }}"
+          echo "Total node in github-runner ${{ github.event.inputs.githubrunnerCount }}"
