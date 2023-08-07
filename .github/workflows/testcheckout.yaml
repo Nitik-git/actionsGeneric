@@ -21,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout for Push
-        if: ${{ startsWith(github.ref, 'refs/heads/') }}
         uses: actions/checkout@v2
 
       - name: which branch on tag
