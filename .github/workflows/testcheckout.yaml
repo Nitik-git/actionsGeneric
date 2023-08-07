@@ -29,5 +29,5 @@ jobs:
       - name: Display branch name
         id: branchname
         run: |-
-          git checkout main
+          git checkout master
           git branch
