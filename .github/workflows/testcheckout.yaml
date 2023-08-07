@@ -29,4 +29,6 @@ jobs:
       - name: Display branch name
         id: branchname
         run: |-
-          git branch
+          echo ${{ github.event}}
+          echo ${{ github.event.ref }}
+
