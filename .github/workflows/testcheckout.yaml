@@ -26,6 +26,9 @@ jobs:
       - name: which branch on tag
         run: echo $GITHUB_REF
 
+      - name: extract tag name
+        run: echo $GITHUB_REF | awk -F'/' '{split($3, arr, "-"); print arr[2]}'
+
       - name: Display branch name
         id: branchname
         run: |-
