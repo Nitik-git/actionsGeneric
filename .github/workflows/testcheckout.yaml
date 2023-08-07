@@ -1,17 +1,20 @@
 name: checkout-workflow
 
 on:
-  workflow_dispatch:
-    inputs:
-      serviceCount: 
-        description: "Enter number of nodes required in services nodepool"
-        default: 2
-      githubrunnerCount:
-        description: "Enter number of nodes required in github-runner nodepool"
-        default: 0
+  # workflow_dispatch:
+  #   inputs:
+  #     serviceCount: 
+  #       description: "Enter number of nodes required in services nodepool"
+  #       default: 2
+  #     githubrunnerCount:
+  #       description: "Enter number of nodes required in github-runner nodepool"
+  #       default: 0
   # push:
   #   branches:
   #     - test/checkout
+  push:
+    tags:
+      - prod-*
 
 jobs:
   services_list:
@@ -20,12 +23,12 @@ jobs:
       - name: Checkout for Push
         if: ${{ startsWith(github.ref, 'refs/heads/') }}
         uses: actions/checkout@v2
-        with:
-          ref: qa1
+
+      - name: which branch on tag
+        run: git branch
 
       - name: Display branch name
         id: branchname
         run: |-
+          git checkout main
           git branch
-          echo "Total node in services ${{ github.event.inputs.serviceCount }}"
-          echo "Total node in github-runner ${{ github.event.inputs.githubrunnerCount }}"
