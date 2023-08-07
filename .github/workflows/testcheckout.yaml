@@ -24,10 +24,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: which branch on tag
-        run: git branch
+        run: echo $GITHUB_REF
 
       - name: Display branch name
         id: branchname
         run: |-
-          git checkout master
           git branch
