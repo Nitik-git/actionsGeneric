@@ -13,11 +13,11 @@ on:
   #   branches:
   #     - test/checkout
   push:
-    tags:
-      - prod-*
+  #   tags:
+  #     - prod-*
 
 jobs:
-  services_list:
+  services-list:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout for Push
