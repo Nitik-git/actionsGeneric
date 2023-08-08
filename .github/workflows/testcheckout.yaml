@@ -13,11 +13,11 @@ on:
   #   branches:
   #     - test/checkout
   push:
-  #   tags:
-  #     - prod-*
+    tags:
+      - prod-*
 
 jobs:
-  services-list:
+  services-list1:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout for Push
@@ -34,3 +34,19 @@ jobs:
         run: |-
           echo ${{ github.event}}
           echo ${{ github.event.ref }}
+
+  services-list2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout for Push
+        uses: actions/checkout@v2
+      - name: extract tag name
+        run: echo hello
+  services-list:
+    runs-on: ubuntu-latest
+    needs: [services-list1,services-list2]
+    steps:
+      - name: Checkout for Push
+        uses: actions/checkout@v2
+      - name: extract tag name
+        run: echo hii
