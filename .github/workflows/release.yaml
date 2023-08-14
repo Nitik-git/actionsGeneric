@@ -14,31 +14,12 @@ jobs:
   services_list:
     runs-on: ubuntu-latest
     steps:
-      # - name: Checkout for Push
-      #   if: ${{ startsWith(github.ref, 'refs/heads/') }}
-      #   uses: actions/checkout@v2
-      #   with:
-      #     ref: qa1
-
-      # - name: Display branch name
-      #   id: branchname
-      #   run: |-
-      #     git branch
-      
-      # - name: Create Release
-      #   id: create_release
-      #   uses: actions/create-release@latest
-      #   with:
-      #     tag_name: ${{ github.ref }}
-      #     release_name: Release ${{ github.ref }}
-      #     draft: false
-      #     prerelease: false
-
       - name: Checkout code
         uses: actions/checkout@v2
+        
       - name: Create Release
         id: create_release
-        uses: actions/create-release@latest
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
