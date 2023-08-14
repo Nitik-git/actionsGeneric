@@ -1,0 +1,34 @@
+name: checkout-workflow
+
+on:
+  # workflow_dispatch:
+  # push:
+  #   branches:
+  #     - test/checkout
+  push:
+    tags:
+      - prod-*
+
+
+jobs:
+  services_list:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Checkout for Push
+      #   if: ${{ startsWith(github.ref, 'refs/heads/') }}
+      #   uses: actions/checkout@v2
+      #   with:
+      #     ref: qa1
+
+      # - name: Display branch name
+      #   id: branchname
+      #   run: |-
+      #     git branch
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
