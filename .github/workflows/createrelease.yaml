@@ -45,14 +45,33 @@ jobs:
       #         --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
       #         --generate-notes
 
-      - name: Create release
+      - name: Changelog
+        uses: scottbrenner/generate-changelog-action@master
+        id: Changelog
+        env:
+          REPO: ${{ github.repository }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}
-        run: |
-          gh release create "$tag" \
-              --repo="$GITHUB_REPOSITORY" \
-              --title="Release ${tag#v}" \
-              --generate-notes
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ${{ steps.Changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
+
+      # - name: Create release
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     tag: ${{ github.ref_name }}
+      #   run: |
+      #     gh release create "$tag" \
+      #         --repo="$GITHUB_REPOSITORY" \
+      #         --title="Release ${tag#v}" \
+      #         --generate-notes
 
 
