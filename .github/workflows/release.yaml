@@ -54,3 +54,4 @@ jobs:
               --repo="$GITHUB_REPOSITORY" \
               --title="Release ${tag#v}" \
               --generate-notes
+              
