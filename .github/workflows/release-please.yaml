@@ -1,29 +1,46 @@
+# on:
+#   push:
+#     branches:
+#       - master
+
+# permissions:
+#   actions: write
+#   checks: write
+#   contents: write
+#   deployments: write
+#   issues: write
+#   packages: write
+#   pull-requests: write
+#   repository-projects: write
+#   security-events: write
+#   statuses: write
+#   id-token: write
+
+# name: release-please
+
+# jobs:
+#   release-please:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: google-github-actions/release-please-action@v3
+#         with:
+#           release-type: node
+#           package-name: release-please-action
+#           token: ${{ secrets.GITHUB_TOKEN }}
+
+name: Deploy Release
 on:
   push:
     branches:
-      - master
-
-permissions:
-  actions: write
-  checks: write
-  contents: write
-  deployments: write
-  issues: write
-  packages: write
-  pull-requests: write
-  repository-projects: write
-  security-events: write
-  statuses: write
-  id-token: write
-
-name: release-please
-
+      - 'dev'
+        
 jobs:
-  release-please:
+  release:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/release-please-action@v3
+      - uses: GoogleCloudPlatform/release-please-action@v3.1
+        id: release                                
         with:
-          release-type: node
-          package-name: release-please-action
-          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: go
+          token: ${{secrets.GITHUB_TOKEN}}
