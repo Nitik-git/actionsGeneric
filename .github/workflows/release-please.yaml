@@ -32,7 +32,7 @@ name: Deploy Release
 on:
   push:
     branches:
-      - 'dev'
+      - master
         
 jobs:
   release:
