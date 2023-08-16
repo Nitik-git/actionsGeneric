@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.2.0...v1.3.0) (2023-08-16)
+
+
+### Features
+
+* update messaging bbb ([4f66335](https://github.com/Nitik-git/actionsGeneric/commit/4f66335346520e53f054cd81c9053f787d505367))
+
+
+### Bug Fixes
+
+* update messaging yyy ([fc3af7e](https://github.com/Nitik-git/actionsGeneric/commit/fc3af7ef00dcc4efe8bc7a5ec783f5d1edfe9359))
+* update releaseplease workflow ([7abb0e8](https://github.com/Nitik-git/actionsGeneric/commit/7abb0e8cc2d56471c5a37ef00ffda84f2542e813))
+
 ## [1.2.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.1.0...v1.2.0) (2023-08-16)
 
 
