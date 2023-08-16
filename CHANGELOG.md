@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.5.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.4.3...v1.5.0) (2023-08-16)
+
+
+### Features
+
+* update api ppp ([5bd5fea](https://github.com/Nitik-git/actionsGeneric/commit/5bd5fea60632d844b4b44bfb7eccf06aae9a49e0))
+* update api qqq ([150fe57](https://github.com/Nitik-git/actionsGeneric/commit/150fe57ca1f42d21b140e8002c4d31128e863d0a))
+
+
+### Bug Fixes
+
+* update api rrr ([0e40407](https://github.com/Nitik-git/actionsGeneric/commit/0e404074a7d6fe46122c0821c73649860e8b6db4))
+
 ## [1.4.3](https://github.com/Nitik-git/actionsGeneric/compare/v1.4.2...v1.4.3) (2023-08-16)
 
 
