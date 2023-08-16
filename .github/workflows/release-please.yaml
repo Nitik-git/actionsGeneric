@@ -4,8 +4,17 @@ on:
       - master
 
 permissions:
+  actions: write
+  checks: write
   contents: write
+  deployments: write
+  issues: write
+  packages: write
   pull-requests: write
+  repository-projects: write
+  security-events: write
+  statuses: write
+  id-token: write
 
 name: release-please
 
@@ -16,4 +25,5 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         with:
           release-type: node
-          token: ${{secrets.GITHUB_TOKEN}}
+          package-name: release-please-action
+          token: ${{ secrets.GITHUB_TOKEN }}
