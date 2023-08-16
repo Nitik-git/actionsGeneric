@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/Nitik-git/actionsGeneric/compare/v1.4.1...v1.4.2) (2023-08-16)
+
+
+### Bug Fixes
+
+* update api lll ([7215e70](https://github.com/Nitik-git/actionsGeneric/commit/7215e701bc08c95d4645c943eb314ddffa17e9f5))
+
 ## [1.4.1](https://github.com/Nitik-git/actionsGeneric/compare/v1.4.0...v1.4.1) (2023-08-16)
 
 
