@@ -3,23 +3,11 @@ on:
     branches:
       - master
 
-permissions:
-  actions: write
-  checks: write
-  contents: write
-  deployments: write
-  issues: write
-  packages: write
-  pull-requests: write
-  repository-projects: write
-  security-events: write
-  statuses: write
-  id-token: write
-
 name: release-please
 
 jobs:
   release-please:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
