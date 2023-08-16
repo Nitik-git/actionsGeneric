@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.1.0...v1.2.0) (2023-08-16)
+
+
+### Features
+
+* update api servc ([0a51905](https://github.com/Nitik-git/actionsGeneric/commit/0a51905fa75d7489d0224f170e870a7ad91b2409))
+
 ## [1.1.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.0.0...v1.1.0) (2023-08-16)
 
 
