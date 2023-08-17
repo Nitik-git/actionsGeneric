@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/Nitik-git/actionsGeneric/compare/v1.5.1...v1.5.2) (2023-08-17)
+
+
+### Bug Fixes
+
+* update api zzz ([b7247b6](https://github.com/Nitik-git/actionsGeneric/commit/b7247b60036c7bc5d04d51922faa615a8fdbda73))
+
 ## [1.5.1](https://github.com/Nitik-git/actionsGeneric/compare/v1.5.0...v1.5.1) (2023-08-17)
 
 
