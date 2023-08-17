@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.3](https://github.com/Nitik-git/actionsGeneric/compare/v1.6.2...v1.6.3) (2023-08-17)
+
+
+### Bug Fixes
+
+* update triger push to create ([71bdc97](https://github.com/Nitik-git/actionsGeneric/commit/71bdc977c734cb4cfb6d47818c5b4e778fa331ea))
+
 ## [1.6.2](https://github.com/Nitik-git/actionsGeneric/compare/v1.6.1...v1.6.2) (2023-08-17)
 
 
