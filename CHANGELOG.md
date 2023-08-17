@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.5.4...v1.6.0) (2023-08-17)
+
+
+### Features
+
+* update trigger event ([e7e1040](https://github.com/Nitik-git/actionsGeneric/commit/e7e1040b5d26185f224c5e6cc97804aeeff5d6c2))
+
 ## [1.5.4](https://github.com/Nitik-git/actionsGeneric/compare/v1.5.3...v1.5.4) (2023-08-17)
 
 
