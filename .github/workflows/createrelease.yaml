@@ -7,7 +7,7 @@ on:
   #     - test/checkout
   push:
     tags:
-      - v*
+      - v1.*
 
 # permissions:
 #   actions: write
