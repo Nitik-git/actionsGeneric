@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.1](https://github.com/Nitik-git/actionsGeneric/compare/v1.5.0...v1.5.1) (2023-08-17)
+
+
+### Bug Fixes
+
+* update api sss ([e26a62e](https://github.com/Nitik-git/actionsGeneric/commit/e26a62e4ddc7de2df11a51b2bab4ee86a5847e57))
+* update api uuu ([94150f2](https://github.com/Nitik-git/actionsGeneric/commit/94150f27e3e19770674354b2d3dd6e588bbe42a7))
+
 ## [1.5.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.4.3...v1.5.0) (2023-08-16)
 
 
