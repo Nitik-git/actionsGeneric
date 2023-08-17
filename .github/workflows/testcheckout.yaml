@@ -3,7 +3,7 @@ name: checkout-workflow
 on:
   # release:
   #   types: [published]
-  push:
+  create:
     tags:
       - '*'
   # push:
