@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.5](https://github.com/Nitik-git/actionsGeneric/compare/v1.6.4...v1.6.5) (2023-08-17)
+
+
+### Bug Fixes
+
+* update trigger official ([2a2a221](https://github.com/Nitik-git/actionsGeneric/commit/2a2a22107c998faef12429170a6709f213154b3e))
+* update trigger official ([1d6f967](https://github.com/Nitik-git/actionsGeneric/commit/1d6f9674946b56472c03bd99ac21328ce499646f))
+
 ## [1.6.4](https://github.com/Nitik-git/actionsGeneric/compare/v1.6.3...v1.6.4) (2023-08-17)
 
 
