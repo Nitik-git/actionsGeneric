@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.4](https://github.com/Nitik-git/actionsGeneric/compare/v1.5.3...v1.5.4) (2023-08-17)
+
+
+### Bug Fixes
+
+* update api dddd ([79d5e22](https://github.com/Nitik-git/actionsGeneric/commit/79d5e2252cad1c9b085f5952295051584132ccb9))
+
 ## [1.5.3](https://github.com/Nitik-git/actionsGeneric/compare/v1.5.2...v1.5.3) (2023-08-17)
 
 
