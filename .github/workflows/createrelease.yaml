@@ -5,7 +5,7 @@ on:
   # push:
   #   branches:
   #     - test/checkout
-  create:
+  push:
     tags:
       - v*
 
