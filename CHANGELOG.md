@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.1](https://github.com/Nitik-git/actionsGeneric/compare/v1.6.0...v1.6.1) (2023-08-17)
+
+
+### Bug Fixes
+
+* update trigger ([b346e1f](https://github.com/Nitik-git/actionsGeneric/commit/b346e1f6c5c3f558a69ba296b7e81f75733ffd38))
+* update trigger for test checkout ([d885525](https://github.com/Nitik-git/actionsGeneric/commit/d885525b65be26eab282437711dbf3b910714d55))
+
 ## [1.6.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.5.4...v1.6.0) (2023-08-17)
 
 
