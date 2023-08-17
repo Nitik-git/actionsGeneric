@@ -3,13 +3,16 @@ name: checkout-workflow
 on:
   # release:
   #   types: [published]
-  push:
-    tags:
-      - v1.*
+  # push:
+  #   tags:
+  #     - v1.*
   # push:
   #   branches:
   #     - test/checkout
-
+  workflow_run:
+    workflows: ["release-please"]
+    types:
+      - completed
 jobs:
   services_list:
     runs-on: ubuntu-latest
