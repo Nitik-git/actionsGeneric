@@ -6,8 +6,8 @@ on:
   #   branches:
   #     - test/checkout
   push:
-    tags:
-      - v1.*
+    branches:
+      - main
 
 # permissions:
 #   actions: write
