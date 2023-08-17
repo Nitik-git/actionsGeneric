@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.2](https://github.com/Nitik-git/actionsGeneric/compare/v1.6.1...v1.6.2) (2023-08-17)
+
+
+### Bug Fixes
+
+* update on push tag ([0ab5e18](https://github.com/Nitik-git/actionsGeneric/commit/0ab5e184f819dd101ea3ef6f6b723c1e6124fa79))
+
 ## [1.6.1](https://github.com/Nitik-git/actionsGeneric/compare/v1.6.0...v1.6.1) (2023-08-17)
 
 
