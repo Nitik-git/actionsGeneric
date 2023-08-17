@@ -6,7 +6,7 @@ on:
   #   branches:
   #     - test/checkout
   create:
-    tags:
+    tag:
       - v*
 
 # permissions:
