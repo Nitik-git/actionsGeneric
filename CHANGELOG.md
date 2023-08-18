@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.9](https://github.com/Nitik-git/actionsGeneric/compare/v1.8.8...v1.8.9) (2023-08-18)
+
+
+### Bug Fixes
+
+* trigger with secret 1 ([5e07fe4](https://github.com/Nitik-git/actionsGeneric/commit/5e07fe44af4dbf11390b0a7cd2af0eb12ecb5220))
+* trigger with secret 2 ([11dc762](https://github.com/Nitik-git/actionsGeneric/commit/11dc762679d3405c1fae1a9ae38b523dde8c071c))
+
 ## [1.8.8](https://github.com/Nitik-git/actionsGeneric/compare/v1.8.7...v1.8.8) (2023-08-18)
 
 
