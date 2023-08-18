@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.7.0...v1.8.0) (2023-08-18)
+
+
+### Features
+
+* test api assessmnt mess ([c765662](https://github.com/Nitik-git/actionsGeneric/commit/c765662b4f481c03029fb56fb2dc68a9d84cb670))
+
 ## [1.7.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.6.6...v1.7.0) (2023-08-18)
 
 
