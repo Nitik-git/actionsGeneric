@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.7.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.6.6...v1.7.0) (2023-08-18)
+
+
+### Features
+
+* test api assessmnt ([0878aab](https://github.com/Nitik-git/actionsGeneric/commit/0878aabc7b64591320981d02b3c15e7b9e4a1146))
+
+
+### Bug Fixes
+
+* update trigger correct2 ([8c2ca13](https://github.com/Nitik-git/actionsGeneric/commit/8c2ca13005e3ed6456143343f8abc64e5351ddfa))
+
 ## [1.6.6](https://github.com/Nitik-git/actionsGeneric/compare/v1.6.5...v1.6.6) (2023-08-17)
 
 
