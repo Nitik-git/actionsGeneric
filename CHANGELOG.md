@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.7](https://github.com/Nitik-git/actionsGeneric/compare/v1.8.6...v1.8.7) (2023-08-18)
+
+
+### Bug Fixes
+
+* pr trigger for release 5 ([b9af106](https://github.com/Nitik-git/actionsGeneric/commit/b9af1069bd5af3711a93371f817b2830cc72004d))
+
 ## [1.8.6](https://github.com/Nitik-git/actionsGeneric/compare/v1.8.5...v1.8.6) (2023-08-18)
 
 
