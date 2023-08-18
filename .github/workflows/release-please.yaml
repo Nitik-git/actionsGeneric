@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - test/rp-7
 
 name: release-please
 
@@ -15,4 +15,5 @@ jobs:
           release-type: node
           package-name: release-please-action
           token: ${{ secrets.PAT }}
+          default-branch: test/rp-7
 
