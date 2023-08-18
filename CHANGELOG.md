@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/Nitik-git/actionsGeneric/compare/v1.9.0...v1.9.1) (2023-08-18)
+
+
+### Bug Fixes
+
+* api and messa ([8d31f25](https://github.com/Nitik-git/actionsGeneric/commit/8d31f25490c0ea92624bc141fc306794ea6d30b5))
+
 ## [1.9.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.8.12...v1.9.0) (2023-08-18)
 
 
