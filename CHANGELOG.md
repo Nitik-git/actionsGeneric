@@ -1,15 +1,5 @@
 # Changelog
 
-## [1.5.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.4.1...v1.5.0) (2023-08-18)
-
-
-### Features
-
-* test api assessmnt ([0878aab](https://github.com/Nitik-git/actionsGeneric/commit/0878aabc7b64591320981d02b3c15e7b9e4a1146))
-* test api assessmnt mess ([c765662](https://github.com/Nitik-git/actionsGeneric/commit/c765662b4f481c03029fb56fb2dc68a9d84cb670))
-* update api ppp ([5bd5fea](https://github.com/Nitik-git/actionsGeneric/commit/5bd5fea60632d844b4b44bfb7eccf06aae9a49e0))
-* update api qqq ([150fe57](https://github.com/Nitik-git/actionsGeneric/commit/150fe57ca1f42d21b140e8002c4d31128e863d0a))
-* update trigger event ([e7e1040](https://github.com/Nitik-git/actionsGeneric/commit/e7e1040b5d26185f224c5e6cc97804aeeff5d6c2))
 ## [1.8.11](https://github.com/Nitik-git/actionsGeneric/compare/v1.8.10...v1.8.11) (2023-08-18)
 
 
