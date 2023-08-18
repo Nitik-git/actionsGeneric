@@ -9,10 +9,12 @@ on:
   # push:
   #   branches:
   #     - test/checkout
-  workflow_run:
-    workflows: ["release-please"]
+  pull_request_target:
     types:
-      - completed
+      - closed
+    branches:
+      - 'chore/**'
+
 jobs:
   services_list:
     runs-on: ubuntu-latest
