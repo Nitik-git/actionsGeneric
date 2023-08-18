@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.10](https://github.com/Nitik-git/actionsGeneric/compare/v1.8.9...v1.8.10) (2023-08-18)
+
+
+### Bug Fixes
+
+* Update ([ddc2a63](https://github.com/Nitik-git/actionsGeneric/commit/ddc2a6330ba73419411498df6781651fa42afe11))
+
 ## [1.8.9](https://github.com/Nitik-git/actionsGeneric/compare/v1.8.8...v1.8.9) (2023-08-18)
 
 
