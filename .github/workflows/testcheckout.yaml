@@ -19,7 +19,7 @@ on:
 
 jobs:
   services_list:
-    runs-on: [self-hosted,prod]
+    runs-on: ubuntu-latest
     outputs:
       matrix:  ${{steps.createarray.outputs.matrix}}
     steps:
@@ -55,7 +55,7 @@ jobs:
               echo "matrix=$(jo -a "${svcArray[@]}" )" >> $GITHUB_OUTPUT
 
   # check-tag-branch:
-  #   runs-on: [self-hosted,prod]
+  #   runs-on: ubuntu-latest
   #   steps:
   #   - name: get tag commit hash
   #     id: tag-commit-hash
@@ -83,7 +83,7 @@ jobs:
 
   build-push-gcr:
     name: Build and Push to GCP
-    runs-on: [self-hosted,prod]
+    runs-on: ubuntu-latest
     needs: [services_list]
     strategy:
       matrix:
