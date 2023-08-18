@@ -15,7 +15,7 @@ on:
   #   branches:
   #     - 'release/**'
   release:
-    types: [created]
+    types: [published]
 
 jobs:
   services_list:
