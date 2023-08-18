@@ -84,7 +84,7 @@ jobs:
   build-push-gcr:
     name: Build and Push to GCP
     runs-on: [self-hosted,prod]
-    needs: [services_list,check-tag-branch]
+    needs: [services_list]
     strategy:
       matrix:
         target: ${{ fromJSON(needs.services_list.outputs.matrix) }}   
