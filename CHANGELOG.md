@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.8.1](https://github.com/Nitik-git/actionsGeneric/compare/v1.8.0...v1.8.1) (2023-08-18)
+
+
+### Bug Fixes
+
+* add storage ([e402109](https://github.com/Nitik-git/actionsGeneric/commit/e4021097e6c175a49403756f8b8c8a6fd6b334f3))
+* add test in api ([9fc83e5](https://github.com/Nitik-git/actionsGeneric/commit/9fc83e5354e4677f20bb3609438f45eb15b4548a))
+* update messaging ([20b6c77](https://github.com/Nitik-git/actionsGeneric/commit/20b6c77083ca2851ae7f5648b1f00ea10c1201c0))
+
 ## [1.8.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.7.0...v1.8.0) (2023-08-18)
 
 
