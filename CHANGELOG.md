@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.2](https://github.com/Nitik-git/actionsGeneric/compare/v1.9.1...v1.9.2) (2023-08-18)
+
+
+### Bug Fixes
+
+* update deploy workflow ([70d7cb3](https://github.com/Nitik-git/actionsGeneric/commit/70d7cb3e39c745e7a6e441e07e3d966d778ee213))
+
 ## [1.9.1](https://github.com/Nitik-git/actionsGeneric/compare/v1.9.0...v1.9.1) (2023-08-18)
 
 
