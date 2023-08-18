@@ -9,11 +9,13 @@ on:
   # push:
   #   branches:
   #     - test/checkout
-  pull_request:
-    types:
-      - closed
-    branches:
-      - 'release/**'
+  # pull_request:
+  #   types:
+  #     - closed
+  #   branches:
+  #     - 'release/**'
+  release:
+    types: [published]
 
 jobs:
   services_list:
