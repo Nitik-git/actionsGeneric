@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.11](https://github.com/Nitik-git/actionsGeneric/compare/v1.8.10...v1.8.11) (2023-08-18)
+
+
+### Bug Fixes
+
+* test counting ([fd2b941](https://github.com/Nitik-git/actionsGeneric/commit/fd2b9415a89cd98fd53d375b38005df144adca9a))
+
 ## [1.8.10](https://github.com/Nitik-git/actionsGeneric/compare/v1.8.9...v1.8.10) (2023-08-18)
 
 
