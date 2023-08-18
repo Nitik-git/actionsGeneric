@@ -19,15 +19,80 @@ on:
 
 jobs:
   services_list:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,prod]
+    outputs:
+      matrix:  ${{steps.createarray.outputs.matrix}}
     steps:
-      - name: Checkout for Push
-        if: ${{ startsWith(github.ref, 'refs/heads/') }}
+      - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: qa1
-
-      - name: Display branch name
-        id: branchname
+                       
+      - name: create files array
+        id: createarray
         run: |-
-          git branch
+              # event=`echo ${{ github.event.ref }} | awk -F'/' '{split($3, arr, "-"); print arr[2]}'`
+              # if [ "${event}" = "worker" ]; then
+              #    WORKER=`echo workers | awk '{printf "%s/%s\n%s/%s\n%s/%s\n", $0, "assessment-due", $0, "metric-aggregate", $0, "metric-calculate"}'`
+              #    echo "worker svcs: $WORKER"
+              # elif [ "${event}" = "user" ]; then
+              #     SERVICES=`echo user-auth-permission`
+              # elif [ "${event}" = "data" ]; then
+              #     SERVICES=`echo data-processing`
+              # else
+              #    SERVICES=`echo $event`
+              #    echo "svcs:$SERVICES"
+              # fi
+              # svcArray=(`echo ${SERVICES} ${WORKER} `)
+              # sudo apt-get update && sudo apt-get install jo
+              # echo "matrix=$(jo -a "${svcArray[@]}" )" >> $GITHUB_OUTPUT
+              # echo $matrix
+              git fetch --tags
+              latest_tag=$(git tag -l 'v*' --sort=-v:refname | head -n 1)
+              latest_minus_one_tag=$(git tag -l 'v*' --sort=-v:refname | sed -n '2p')
+              SERVICES=`git diff --name-only --no-commit-id $latest_tag..$latest_minus_one_tag | awk -F/ '{ print $1}' | uniq | sed -n -e '/api/p' -e '/assessment/p'  -e '/data-processing/p' -e '/framework/p' -e '/messaging/p' -e '/storage/p' -e '/user-auth-permission/p' -e '/visualization/p'`
+              WORKER=`git diff --name-only --no-commit-id $latest_tag..$latest_minus_one_tag | awk -F/ '{ print $1"/"$2}' | uniq | sed -n -e '/worker/p'`
+              svcArray=(`echo ${SERVICES} ${WORKER} `)
+              sudo apt-get update && sudo apt-get install jo
+              echo "matrix=$(jo -a "${svcArray[@]}" )" >> $GITHUB_OUTPUT
+
+  # check-tag-branch:
+  #   runs-on: [self-hosted,prod]
+  #   steps:
+  #   - name: get tag commit hash
+  #     id: tag-commit-hash
+  #     run: |
+  #       hash=${{ GITHUB.SHA }}
+  #       echo "::set-output name=tag-hash::${hash}"
+  #       echo $hash
+  #   - name: checkout main
+  #     uses: actions/checkout@v2
+  #     with:
+  #       ref: main
+
+  #   - name: branch name
+  #     run: git branch
+
+  #   - name: get latest main commit hash
+  #     id: main-commit-hash
+  #     run: |
+  #       hash=$(git log -n1 --format=format:"%H")
+  #       echo "::set-output name=main-hash::${hash}"
+  #       echo $hash
+  #   - name: exit if tag commit hash don't match main commit hash
+  #     if: steps.tag-commit-hash.outputs.tag-hash != steps.main-commit-hash.outputs.main-hash
+  #     run: exit 1
+
+  build-push-gcr:
+    name: Build and Push to GCP
+    runs-on: [self-hosted,prod]
+    needs: [services_list,check-tag-branch]
+    strategy:
+      matrix:
+        target: ${{ fromJSON(needs.services_list.outputs.matrix) }}   
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: test/rp-8
+
+    - name: branch name
+      run: git branch
