@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.9.5...v2.0.0) (2023-08-21)
+
+
+### Bug Fixes
+
+* changes in assessment ([4dd8532](https://github.com/Nitik-git/actionsGeneric/commit/4dd8532b35adba92da661aa317185cbf4c811a70))
+
+
+### Miscellaneous Chores
+
+* release 2.0.0 ([057a12f](https://github.com/Nitik-git/actionsGeneric/commit/057a12f280b06b2e5e27822e6f5a26199e225595))
+
 ## [1.9.5](https://github.com/Nitik-git/actionsGeneric/compare/v1.9.4...v1.9.5) (2023-08-21)
 
 
