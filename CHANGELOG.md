@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.0](https://github.com/Nitik-git/actionsGeneric/compare/v2.1.0...v2.2.0) (2023-08-21)
+
+
+### Features
+
+* test workers ([c0b897a](https://github.com/Nitik-git/actionsGeneric/commit/c0b897af29d43807d0a6f6d9d45250803cd751b5))
+
+
+### Bug Fixes
+
+* due to rename add assessment-due ([ad0a84f](https://github.com/Nitik-git/actionsGeneric/commit/ad0a84f4258ecea616c63aa66e15acd00bf5689c))
+* update dataprocessing aaa ([3af3f8b](https://github.com/Nitik-git/actionsGeneric/commit/3af3f8bf6fde51efdb255878abeb42baaf16a8eb))
+
 ## [2.1.0](https://github.com/Nitik-git/actionsGeneric/compare/v2.0.0...v2.1.0) (2023-08-21)
 
 
