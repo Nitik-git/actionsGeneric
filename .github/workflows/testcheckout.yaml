@@ -96,3 +96,15 @@ jobs:
 
     - name: branch name
       run: git branch
+    
+    - name: TARGET name
+      run: echo ${{matrix.target}}
+    
+    - name: Extract tag location
+      run: |-
+        export SVC_VARIABLE=`echo ${{ matrix.target }}`
+        SVCS=$(basename $SVC_VARIABLE)
+        echo "workersvc=$SVCS" >> "$GITHUB_ENV"
+
+    - name: ECHO TAGLOCATION
+      run: echo ${{env.workersvc}}
