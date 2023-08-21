@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.0](https://github.com/Nitik-git/actionsGeneric/compare/v2.0.0...v2.1.0) (2023-08-21)
+
+
+### Features
+
+* create data-processing ([01a96d7](https://github.com/Nitik-git/actionsGeneric/commit/01a96d769812434d67c593596e5d05d8b775570e))
+
+
+### Bug Fixes
+
+* update echos and test worker ([c9d47fc](https://github.com/Nitik-git/actionsGeneric/commit/c9d47fc215efd999f5cd4bd85ca04056430b5f41))
+
 ## [2.0.0](https://github.com/Nitik-git/actionsGeneric/compare/v1.9.5...v2.0.0) (2023-08-21)
 
 
