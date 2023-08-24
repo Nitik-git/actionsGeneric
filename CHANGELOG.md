@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/Nitik-git/actionsGeneric/compare/v2.2.0...v2.2.1) (2023-08-24)
+
+
+### Bug Fixes
+
+* test this ([c453310](https://github.com/Nitik-git/actionsGeneric/commit/c453310d5059efeeabaff04214d656fdc821ccb4))
+
 ## [2.2.0](https://github.com/Nitik-git/actionsGeneric/compare/v2.1.0...v2.2.0) (2023-08-21)
 
 
