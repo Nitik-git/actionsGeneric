@@ -41,5 +41,3 @@ jobs:
       #         --title="Release ${tag#v}" \
       #         --generate-notes
 
-
-
