@@ -6,6 +6,7 @@ on:
     branches:
       - qa1
       - qa2
+      - master
 # permissions:
 #   actions: write
 
