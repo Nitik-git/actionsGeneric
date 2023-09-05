@@ -1,0 +1,40 @@
+name: availability-workflow
+
+on:
+  workflow_run:
+    workflows: ["pr-workflow"]
+    types:
+      - completed
+
+# permissions:
+#   actions: write
+
+jobs:
+  firstjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: display branch
+        run: git branch   
+
+      - name: Check PR for Base Ref
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          BASE_REF: "qa1" # Replace with the base reference you want to check
+        run: |
+          # Install jq for JSON parsing
+          sudo apt-get update && sudo apt-get -y install jq
+
+          # Get the list of open pull requests for the specified base ref
+          prs=$(curl -s -H "Authorization: token $PAT" \
+            "https://api.github.com/repos/${{ github.repository }}/pulls?base=$BASE_REF")
+
+          # Check if there are any open pull requests
+          if [ "$(echo "$prs" | jq length)" -gt 0 ]; then
+            echo "There are open pull requests for base ref '$BASE_REF'."
+            echo "$prs"
+          else
+            echo "There are no open pull requests for base ref '$BASE_REF'."
+          fi
