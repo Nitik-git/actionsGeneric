@@ -25,14 +25,26 @@ jobs:
           # Install jq for JSON parsing
           sudo apt-get update && sudo apt-get -y install jq
 
-          # Get the list of open pull requests for the specified base ref
-          prs=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/pulls?base=$BASE_REF&state=open")
+          # Split the BASE_REFS environment variable into an array
+          IFS=',' read -ra BASE_REF_ARRAY <<< "$BASE_REFS"
 
-          # Check if there are any open pull requests
-          if [ "$(echo "$prs" | jq length)" -gt 0 ]; then
-            echo "There are open pull requests for base ref '$BASE_REF'."
-            echo "$prs"
+          # Initialize an empty array to store branch names
+          BRANCHES_WITH_PR=()
+
+          # Iterate through the base references and check for open pull requests
+          for BASE_REF in "${BASE_REF_ARRAY[@]}"; do
+            prs=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+              "https://api.github.com/repos/${{ github.repository }}/pulls?base=$BASE_REF")
+
+            # Check if there are any open pull requests
+            if [ "$(echo "$prs" | jq length)" -gt 0 ]; then
+              BRANCHES_WITH_PR+=("$BASE_REF")
+            fi
+          done
+
+          # Print the branch names with open pull requests
+          if [ "${#BRANCHES_WITH_PR[@]}" -gt 0 ]; then
+            echo "Branches with open pull requests: ${BRANCHES_WITH_PR[@]}"
           else
-            echo "There are no open pull requests for base ref '$BASE_REF'."
+            echo "No open pull requests found for any branches."
           fi
