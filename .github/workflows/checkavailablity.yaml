@@ -20,7 +20,7 @@ jobs:
       - name: Check PR for Base Ref
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
-          BASE_REF: "qa1" # Replace with the base reference you want to check
+          BASE_REF: "qa1,qa2" # Replace with the base reference you want to check
         run: |
           # Install jq for JSON parsing
           sudo apt-get update && sudo apt-get -y install jq
