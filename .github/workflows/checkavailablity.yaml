@@ -1,11 +1,8 @@
 name: availability-workflow
 
 on:
-  workflow_run:
-    workflows:
-      - pr-workflow
-    types:
-      - completed
+  pull_request:
+    types: [opened]
 
 # permissions:
 #   actions: write
