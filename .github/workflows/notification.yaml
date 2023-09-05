@@ -1,0 +1,23 @@
+name: notification-workflow
+
+on:
+  # workflow_dispatch:
+  # push:
+  #   branches:
+  #     - test/checkout
+  push:
+    branches:
+      - test/notification-slack
+
+# permissions:
+#   actions: write
+
+jobs:
+  firstjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: display branch
+        run: git branch        
