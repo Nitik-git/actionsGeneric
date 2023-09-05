@@ -3,7 +3,9 @@ name: pr-workflow
 on:
   pull_request:
     types: [opened]
-    branches: master
+    branches:
+      - qa1
+      - qa2
 # permissions:
 #   actions: write
 
