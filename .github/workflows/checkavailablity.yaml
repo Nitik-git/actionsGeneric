@@ -27,7 +27,7 @@ jobs:
 
           # Get the list of open pull requests for the specified base ref
           prs=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/pulls?base=$BASE_REF")
+            "https://api.github.com/repos/${{ github.repository }}/pulls?base=$BASE_REF&state=open")
 
           # Check if there are any open pull requests
           if [ "$(echo "$prs" | jq length)" -gt 0 ]; then
