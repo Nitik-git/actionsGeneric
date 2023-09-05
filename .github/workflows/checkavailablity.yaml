@@ -26,7 +26,7 @@ jobs:
           sudo apt-get update && sudo apt-get -y install jq
 
           # Get the list of open pull requests for the specified base ref
-          prs=$(curl -s -H "Authorization: token $PAT" \
+          prs=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
             "https://api.github.com/repos/${{ github.repository }}/pulls?base=$BASE_REF")
 
           # Check if there are any open pull requests
