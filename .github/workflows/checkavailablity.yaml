@@ -1,11 +1,9 @@
 name: availability-workflow
 
 on:
-  pull_request:
-    types: [opened]
-    branches-ignore:
-      - 'qa1'
-      - 'qa2'
+  push:
+    branches:
+      - 'test/PRtrigger'
 
 # permissions:
 #   actions: write
