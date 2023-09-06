@@ -22,21 +22,18 @@ jobs:
 
       - name: Check PR for Base Ref
         run:          
-              qa1_str  =$(gh pr list --base qa1)
-              qa1_ext=$(echo $qa1_str | sed 's/.*\(#\).*/\1/')
-              if["${qa1_ext}"="#"]; then
+              qa1_str=$(gh pr list --base qa1)
+              # qa1_ext=$(echo $qa1_str | sed 's/.*\(#\).*/\1/')
+              if [[ "$qa1_str" =~ ^[0-9]+ ]]; then
                 qa1_mess="qa1 is occupied"
-                message = qa1_mess
               fi
               qa2_str  =$(gh pr list --base qa2)
-              if["${qa2_ext}"="#"]; then
+              if [[ "$qa2_str" =~ ^[0-9]+ ]]; then
                 qa2_mess="qa2 is occupied"
-                message = qa1_mess"\n"qa2_mess
               fi
               qa3_str  =$(gh pr list --base qa3)
-              if["${qa3_ext}"="#"]; then
+              if [[ "$qa3_str" =~ ^[0-9]+ ]]; then
                 qa3_mess="qa3 is occupied"
-                message = qa1_mess"\n"qa2_mess"\n"qa2_mess
               fi
               message = $qa1_mess"\n"$qa2_mess"\n"$qa3_mess
               echo $message
