@@ -31,4 +31,4 @@ jobs:
 
       - name: test arraAY PASS
         run: |-
-              echo ${MY_ARRAY[0]}
+              echo ${MY_ARRAY}
