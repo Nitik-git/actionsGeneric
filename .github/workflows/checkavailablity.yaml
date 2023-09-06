@@ -42,12 +42,8 @@ jobs:
                 qa3_mess="qa3 is occupied"
               fi
 
-              
-      
 
-              
-              message=$(echo -e "$qa1_mess\n$qa2_mess\n$qa3_mess" | sed '/^$/d')
-              echo "msg=$message" >> "$GITHUB_ENV"
+
 
               my_array=()
 
