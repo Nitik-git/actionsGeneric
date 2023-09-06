@@ -75,13 +75,28 @@ jobs:
               if [ -z "$qa3_mess" ]; then
                 my_array+=("qa3")
               fi
+                
+              echo "MY_ARRAY=${my_array[@]}" >> $GITHUB_ENV
 
+
+
+      - name: 'Create PR'
+        if: ${{ MY_ARRAY != '' }}
+        env: 
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}      
+        run: |-
+          first_value=$(echo "$MY_VAR" | sed 's/ .*//')
+          echo "test=$first_value" >> "$GITHUB_ENV"
+          gh pr list
+          git branch
+          gh pr create -B "proof-v10-${{ env.test }}" -t "this is test" -b testiiing
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.NA_WEBHOOK_URL }}
           SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: ${{ env.msg }}
+          SLACK_MESSAGE: '${{ env.test }} is available'
           SLACK_TITLE: Post Title
           SLACK_USERNAME: rtCamp
+
