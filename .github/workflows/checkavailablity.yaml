@@ -21,7 +21,7 @@ jobs:
         run: git branch   
 
       - name: Check PR for Base Ref
-        run:          
+        run: |-          
               qa1_str=$(gh pr list --base qa1)
               if [[ "$qa1_str" =~ ^[0-9]+ ]]; then
                 qa1_mess="qa1 is occupied"
