@@ -81,7 +81,7 @@ jobs:
 
 
       - name: 'Create PR'
-        if: {{ $MY_ARRAY != '' }}
+        if: env.MY_ARR != 'null'
         env: 
           GH_TOKEN: ${{ secrets.GH_TOKEN }}      
         run: |-
