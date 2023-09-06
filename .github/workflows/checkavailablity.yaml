@@ -3,6 +3,8 @@ name: availability-workflow
 on:
   pull_request:
     types: [opened]
+    branches:
+      - 'qa1'
 
 # permissions:
 #   actions: write
