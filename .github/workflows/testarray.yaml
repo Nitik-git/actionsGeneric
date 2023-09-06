@@ -27,6 +27,10 @@ jobs:
                   my_array+=("qa3")
                 fi
 
-                echo ${my_array[0]}
-                echo ${my_array[1]}
-                echo ${my_array[2]}
+                echo "MY_ARRAY=${my_array[@]}" >> $GITHUB_ENV
+
+      - name: test arraAY PASS
+        run: |-
+              echo $MY_ARRAY[0]
+              echo $MY_ARRAY[1]
+              echo $MY_ARRAY[2]              

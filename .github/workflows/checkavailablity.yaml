@@ -20,7 +20,7 @@ jobs:
       - name: display branch
         run: git branch   
 
-      - name: Check PR for Base Ref
+      - name: Check availability of QA
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |-          
