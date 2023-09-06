@@ -21,33 +21,23 @@ jobs:
         run: git branch   
 
       - name: Check PR for Base Ref
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-          BASE_REF: "qa1,qa2" # Replace with the base reference you want to check
-        run: |
-          # Install jq for JSON parsing
-          sudo apt-get update && sudo apt-get -y install jq
+        run:          
+              qa1_str  =$(gh pr list --base qa1)
+              qa1_ext=$(echo $qa1_str | sed 's/.*\(#\).*/\1/')
+              if["${qa1_ext}"="#"]; then
+                qa1_mess="qa1 is occupied"
+                message = qa1_mess
+              fi
+              qa2_str  =$(gh pr list --base qa2)
+              if["${qa2_ext}"="#"]; then
+                qa2_mess="qa2 is occupied"
+                message = qa1_mess"\n"qa2_mess
+              fi
+              qa3_str  =$(gh pr list --base qa3)
+              if["${qa3_ext}"="#"]; then
+                qa3_mess="qa3 is occupied"
+                message = qa1_mess"\n"qa2_mess"\n"qa2_mess
+              fi
+              message = $qa1_mess"\n"$qa2_mess"\n"$qa3_mess
+              echo $message
 
-          # Split the BASE_REFS environment variable into an array
-          IFS=',' read -ra BASE_REF_ARRAY <<< "$BASE_REFS"
-
-          # Initialize an empty array to store branch names
-          BRANCHES_WITH_PR=()
-
-          # Iterate through the base references and check for open pull requests
-          for BASE_REF in "${BASE_REF_ARRAY[@]}"; do
-            prs=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-              "https://api.github.com/repos/${{ github.repository }}/pulls?base=$BASE_REF")
-
-            # Check if there are any open pull requests
-            if [ "$(echo "$prs" | jq length)" -gt 0 ]; then
-              BRANCHES_WITH_PR+=("$BASE_REF")
-            fi
-          done
-
-          # Print the branch names with open pull requests
-          if [ "${#BRANCHES_WITH_PR[@]}" -gt 0 ]; then
-            echo "Branches with open pull requests: ${BRANCHES_WITH_PR[@]}"
-          else
-            echo "No open pull requests found for any branches."
-          fi
