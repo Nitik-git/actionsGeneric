@@ -21,6 +21,8 @@ jobs:
         run: git branch   
 
       - name: Check PR for Base Ref
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |-          
               qa1_str=$(gh pr list --base qa1)
               if [[ "$qa1_str" =~ ^[0-9]+ ]]; then
