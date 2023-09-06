@@ -1,9 +1,11 @@
 name: availability-workflow
 
 on:
-  push:
-    branches:
-      - 'test/PRtrigger'
+  pull_request:
+    types: [opened]
+    branches-ignore:
+      - 'qa1'
+      - 'qa2'
 
 # permissions:
 #   actions: write
@@ -21,7 +23,6 @@ jobs:
       - name: Check PR for Base Ref
         run:          
               qa1_str=$(gh pr list --base qa1)
-              # qa1_ext=$(echo $qa1_str | sed 's/.*\(#\).*/\1/')
               if [[ "$qa1_str" =~ ^[0-9]+ ]]; then
                 qa1_mess="qa1 is occupied"
               fi
