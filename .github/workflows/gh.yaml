@@ -1,0 +1,16 @@
+name: gh-testing
+
+on:
+  push:
+    branches:
+      - 'test/PRtrigger'
+
+jobs:
+  gh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check availability of QA
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |-          
+              gh pr list
