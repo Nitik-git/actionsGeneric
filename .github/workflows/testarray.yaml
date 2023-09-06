@@ -3,7 +3,7 @@ name: array-testing
 on:
   push:
     branches:
-      - 'test/PRtrigger'
+      - 'abctest/PRtrigger'
 
 jobs:
   array:

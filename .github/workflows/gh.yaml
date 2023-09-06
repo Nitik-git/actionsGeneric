@@ -3,7 +3,7 @@ name: gh-testing
 on:
   push:
     branches:
-      - 'test/PRtrigger'
+      - 'abctest/PRtrigger'
 
 jobs:
   gh:
