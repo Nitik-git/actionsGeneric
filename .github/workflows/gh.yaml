@@ -1,0 +1,21 @@
+name: gh-workflow
+
+on:
+  push:
+    branches:
+      - test/PRtrigger
+
+jobs:
+  testgh:
+    runs-on: ubuntu:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+                       
+      - name: install gh
+        run: |
+          sudo apt update
+          sudo apt upgrade
+          sudo apt install gh
+          gh auth login --with-token < ${{ secrets.NA_WEBHOOK_URL }}
+          gh pr list --state open
