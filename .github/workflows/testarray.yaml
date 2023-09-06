@@ -13,7 +13,7 @@ jobs:
         run: |-
               my_array=()
                 qa1_mess="abc"
-                qa3_mess="ghi"
+                qa3_mess=""
                 qa2_mess=""
                 if [ -z "$qa1_mess" ]; then
                   my_array+=("qa1")
@@ -28,3 +28,5 @@ jobs:
                 fi
 
                 echo ${my_array[0]}
+                echo ${my_array[1]}
+                echo ${my_array[2]}
