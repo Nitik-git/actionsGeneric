@@ -28,14 +28,14 @@ jobs:
               if [[ "$qa1_str" =~ ^[0-9]+ ]]; then
                 qa1_mess="qa1 is occupied"
               fi
-              qa2_str  =$(gh pr list --base qa2)
+              qa2_str=$(gh pr list --base qa2)
               if [[ "$qa2_str" =~ ^[0-9]+ ]]; then
                 qa2_mess="qa2 is occupied"
               fi
-              qa3_str  =$(gh pr list --base qa3)
+              qa3_str=$(gh pr list --base qa3)
               if [[ "$qa3_str" =~ ^[0-9]+ ]]; then
                 qa3_mess="qa3 is occupied"
               fi
-              message = $qa1_mess"\n"$qa2_mess"\n"$qa3_mess
+              message=$qa1_mess"\n"$qa2_mess"\n"$qa3_mess
               echo $message
 
