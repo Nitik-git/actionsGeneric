@@ -61,9 +61,9 @@ jobs:
                 my_array+=("qa3")
               fi
 
-              MY_ARRAY=${my_array[@]}
-              echo $MY_ARRAY  
-              echo "MY_ARRAY=${my_array[@]}" >> $GITHUB_ENV
+              var=${my_array[@]}
+              echo $var 
+              echo "MY_ARRAY=$var" >> $GITHUB_ENV
               echo $MY_ARRAY
               echo ${{env.MY_ARRAY}}
               echo $(echo "$MY_ARRAY" | sed 's/ .*//')
