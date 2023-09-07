@@ -48,7 +48,7 @@ jobs:
               git fetch origin qa1
               git checkout qa1
               log=`git log --oneline --decorate --skip=1 -n 1`
-              count=$(echo $log | grep -o "main" | wc -l | tr -d '[:space:]')
+              count=$(echo $log | grep -o "master" | wc -l | tr -d '[:space:]')
               if [[count!=2]]; then
                 qa1_mess="qa1 is occupied"
               fi
@@ -56,7 +56,7 @@ jobs:
               git fetch origin qa2
               git checkout qa2
               log=`git log --oneline --decorate --skip=1 -n 1`
-              count=$(echo $log | grep -o "main" | wc -l | tr -d '[:space:]')
+              count=$(echo $log | grep -o "master" | wc -l | tr -d '[:space:]')
               if [[count!=2]]; then
                 qa2_mess="qa2 is occupied"
               fi
