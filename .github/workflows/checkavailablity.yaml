@@ -75,7 +75,7 @@ jobs:
           echo "${{env.test}}"
           gh pr list
           git branch
-          gh pr create --base ${{env.test}} -t "tag test" -b "testiiing"
+          gh pr create --base "${{env.test}}" -t "tag test" -b "testiiing"
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
