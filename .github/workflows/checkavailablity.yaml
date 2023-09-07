@@ -63,7 +63,7 @@ jobs:
 
               var=${my_array[@]}
               echo $var 
-              echo "MY_ARRAY=$var" >> $GITHUB_ENV
+              echo "MY_ARRAY=$var" >> "$GITHUB_ENV"
               echo $MY_ARRAY
               echo ${{env.MY_ARRAY}}
               echo $(echo "$MY_ARRAY" | sed 's/ .*//')
