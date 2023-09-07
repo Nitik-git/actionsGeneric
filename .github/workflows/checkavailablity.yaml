@@ -83,6 +83,7 @@ jobs:
               echo "test=$(echo "$variable" | sed 's/ .*//')" >> "$GITHUB_ENV"
 
       - name: 'Create PR'
+        if: ${{ env.test }} != ''
         id: create-pr
         if: env.var != 'null'
         env: 
