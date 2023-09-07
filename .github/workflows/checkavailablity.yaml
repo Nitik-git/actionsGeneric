@@ -72,6 +72,7 @@ jobs:
         run: |-
           first_value=$(echo "$MY_VAR" | sed 's/ .*//')
           echo "test=$first_value" >> "$GITHUB_ENV"
+          echo ${{env.test}}
           gh pr list
           git branch
           gh pr create --base ${{env.test}} -t "tag test" -b "testiiing"
