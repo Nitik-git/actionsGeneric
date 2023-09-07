@@ -49,7 +49,7 @@ jobs:
               git checkout qa1
               log=`git log --oneline --decorate --skip=1 -n 1`
               count=$(echo $log | grep -o "master" | wc -l | tr -d '[:space:]')
-              if [[$count!=2]]; then
+              if [ "$count" -ne 2 ]; then
                 qa1_mess="qa1 is occupied"
               fi
 
@@ -57,7 +57,7 @@ jobs:
               git checkout qa2
               log=`git log --oneline --decorate --skip=1 -n 1`
               count=$(echo $log | grep -o "master" | wc -l | tr -d '[:space:]')
-              if [[$count!=2]]; then
+              if [ "$count" -ne 2 ]; then
                 qa2_mess="qa2 is occupied"
               fi
               
