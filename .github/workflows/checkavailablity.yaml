@@ -60,7 +60,9 @@ jobs:
               if [ -z "$qa3_mess" ]; then
                 my_array+=("qa3")
               fi
-                
+
+              MY_ARRAY=${my_array[@]}
+              echo $MY_ARRAY  
               echo "MY_ARRAY=${my_array[@]}" >> $GITHUB_ENV
               echo $MY_ARRAY
               echo ${{env.MY_ARRAY}}
@@ -76,7 +78,7 @@ jobs:
           echo "${{env.test}}"
           gh pr list
           git branch
-          gh pr create --base "${{env.test}}" -t "tag test" -b "testiiing"
+          gh pr create --base "${{ env.test }}" -t "tag test" -b "testiiing"
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
