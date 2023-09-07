@@ -62,8 +62,9 @@ jobs:
               fi
                 
               echo "MY_ARRAY=${my_array[@]}" >> $GITHUB_ENV
-
-
+              echo $MY_ARRAY
+              echo ${{env.MY_ARRAY}}
+              echo $(echo "$MY_ARRAY" | sed 's/ .*//')
 
       - name: 'Create PR'
         if: env.MY_ARRAY != 'null'
