@@ -61,12 +61,12 @@ jobs:
                 my_array+=("qa3")
               fi
 
-              var=${my_array[@]}
-              echo $variable 
+              variable=${my_array[@]}
+              echo "full array in variable : $variable "
               echo "var=$variable" >> "$GITHUB_ENV"
-              echo $var
-              echo ${{env.var}}
-              echo $(echo "$var" | sed 's/ .*//')
+              echo "var simple github env : $var"
+              echo "var complex github env : ${{env.var}}"
+              echo "cut first word : $(echo "$var" | sed 's/ .*//')"
 
       - name: 'Create PR'
         if: env.var != 'null'
