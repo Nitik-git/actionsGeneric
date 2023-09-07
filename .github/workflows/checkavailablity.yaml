@@ -26,6 +26,7 @@ jobs:
              
 
       - name: Check availability of QA
+        id: check-availability
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |-          
@@ -70,6 +71,7 @@ jobs:
               echo "cut first word variable : $(echo "$variable" | sed 's/ .*//')"
 
       - name: 'Create PR'
+        id: create-pr
         if: env.var != 'null'
         env: 
           GH_TOKEN: ${{ secrets.GH_TOKEN }}      
