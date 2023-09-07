@@ -73,9 +73,6 @@ jobs:
                 my_array+=("qa2")
               fi
 
-              if [ -z "$qa3_mess" ]; then
-                my_array+=("qa3")
-              fi
 
               variable=${my_array[@]}
               echo "full array in variable : $variable "
@@ -97,12 +94,21 @@ jobs:
           git branch
           gh pr create --base "${{ env.test }}" -t "tag test" -b "testiiing"
 
-      - name: Slack Notification
+
+      - name: 'Slack Notification'
+        if: ${{ env.test }} == '' 
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.NA_WEBHOOK_URL }}
-          SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: '${{ env.test }} is available'
+          SLACK_MESSAGE: 'no qa env is present currentlyPost Content :rocket:'
           SLACK_TITLE: Post Title
-          SLACK_USERNAME: rtCamp
+          SLACK_USERNAME: GitBot
 
+      - name: 'Slack Notification'
+        if: ${{ env.test }} != ''
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.NA_WEBHOOK_URL }}
+          SLACK_MESSAGE: 'PR IS CREATED with ${{ env.test }}'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: GitBot
