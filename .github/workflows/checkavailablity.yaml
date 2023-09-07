@@ -66,13 +66,13 @@ jobs:
 
 
       - name: 'Create PR'
-        if: env.MY_ARR != 'null'
+        if: env.MY_ARRAY != 'null'
         env: 
           GH_TOKEN: ${{ secrets.GH_TOKEN }}      
         run: |-
-          first_value=$(echo "$MY_VAR" | sed 's/ .*//')
+          first_value=$(echo "$MY_ARRAY" | sed 's/ .*//')
           echo "test=$first_value" >> "$GITHUB_ENV"
-          echo ${{env.test}}
+          echo "${{env.test}}"
           gh pr list
           git branch
           gh pr create --base ${{env.test}} -t "tag test" -b "testiiing"
