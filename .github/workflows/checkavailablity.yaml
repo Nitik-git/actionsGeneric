@@ -60,7 +60,8 @@ jobs:
               if [[count!=2]]; then
                 qa2_mess="qa2 is occupied"
               fi
-
+              
+              git checkout test/PRtrigger
 
               my_array=()
 
