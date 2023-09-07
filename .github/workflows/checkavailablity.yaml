@@ -62,18 +62,18 @@ jobs:
               fi
 
               var=${my_array[@]}
-              echo $var 
-              echo "MY_ARRAY=$var" >> "$GITHUB_ENV"
-              echo $MY_ARRAY
-              echo ${{env.MY_ARRAY}}
-              echo $(echo "$MY_ARRAY" | sed 's/ .*//')
+              echo $variable 
+              echo "var=$variable" >> "$GITHUB_ENV"
+              echo $var
+              echo ${{env.var}}
+              echo $(echo "$var" | sed 's/ .*//')
 
       - name: 'Create PR'
-        if: env.MY_ARRAY != 'null'
+        if: env.var != 'null'
         env: 
           GH_TOKEN: ${{ secrets.GH_TOKEN }}      
         run: |-
-          first_value=$(echo "$MY_ARRAY" | sed 's/ .*//')
+          first_value=$(echo "$var" | sed 's/ .*//')
           echo "test=$first_value" >> "$GITHUB_ENV"
           echo "${{env.test}}"
           gh pr list
