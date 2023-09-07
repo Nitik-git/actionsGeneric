@@ -105,7 +105,7 @@ jobs:
           SLACK_USERNAME: GitBot
 
       - name: 'Slack Notification'
-        if: ${{ env.test }} != ''
+        if: ${{ env.test != '' }} 
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.NA_WEBHOOK_URL }}
