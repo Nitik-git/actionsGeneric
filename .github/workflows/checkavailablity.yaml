@@ -68,7 +68,7 @@ jobs:
               echo "var simple github env : $var"
               echo "var complex github env : ${{env.var}}"
               echo "cut first word var : $(echo "$var" | sed 's/ .*//')"
-              echo "cut first word variable : $(echo "$variable" | sed 's/ .*//')"
+              echo "test=$(echo "$variable" | sed 's/ .*//')" >> "$GITHUB_ENV"
 
       - name: 'Create PR'
         id: create-pr
@@ -76,9 +76,8 @@ jobs:
         env: 
           GH_TOKEN: ${{ secrets.GH_TOKEN }}      
         run: |-
-          first_value=$(echo "$var" | sed 's/ .*//')
-          echo "test=$first_value" >> "$GITHUB_ENV"
-          echo "${{env.test}}"
+          echo $test
+          echo "${{ env.test }}"
           gh pr list
           git branch
           gh pr create --base "${{ env.test }}" -t "tag test" -b "testiiing"
