@@ -18,7 +18,7 @@ jobs:
           touch fffile.txt
       - name: merge
         run: |-
-          git fetch master
+          git fetch origin master
           git checkout master
           git merge test-ff-merge -X theirs
           ls
