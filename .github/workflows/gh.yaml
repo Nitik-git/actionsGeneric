@@ -1,4 +1,4 @@
-name: gh-testing
+name: gh-testing-wasting
 
 on:
   push:
