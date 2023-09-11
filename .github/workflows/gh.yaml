@@ -20,5 +20,5 @@ jobs:
         run: |-
           git fetch origin master
           git checkout master
-          git merge test-ff-merge
+          git merge test-ff-merge --ff
           ls
