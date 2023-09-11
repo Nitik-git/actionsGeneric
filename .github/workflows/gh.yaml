@@ -33,6 +33,3 @@ jobs:
               
       
 
-              
-              message=$(echo -e "$qa1_mess\n$qa2_mess\n$qa3_mess" | sed '/^$/d')
-              echo $message
