@@ -1,0 +1,34 @@
+name: array-testing
+
+on:
+  push:
+    branches:
+      - 'abctest/PRtrigger'
+
+jobs:
+  array:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: |-
+              my_array=()
+                qa1_mess="abc"
+                qa3_mess=""
+                qa2_mess=""
+                if [ -z "$qa1_mess" ]; then
+                  my_array+=("qa1")
+                fi
+
+                if [ -z "$qa2_mess" ]; then
+                  my_array+=("qa2")
+                fi
+
+                if [ -z "$qa3_mess" ]; then
+                  my_array+=("qa3")
+                fi
+
+                echo "MY_ARRAY=${my_array[@]}" >> $GITHUB_ENV
+
+      - name: test arraAY PASS
+        run: |-
+              echo ${MY_ARRAY}

@@ -1,0 +1,114 @@
+name: availability-workflow
+
+on:
+  pull_request:
+    types: [opened]
+    branches-ignore:
+      - 'qa1'
+      - 'qa2'
+
+# permissions:
+#   actions: write
+
+jobs:
+  firstjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: test/PRtrigger
+      
+      - name: display branch
+        run: |-
+         git branch
+         echo ${{ github.head_ref }} 
+             
+
+      - name: Check availability of QA
+        id: check-availability
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |-          
+              qa1_str=$(gh pr list --base qa1)
+              if [[ "$qa1_str" =~ ^[0-9]+ ]]; then
+                qa1_mess="qa1 is occupied"
+              fi
+
+              qa2_str=$(gh pr list --base qa2)
+              if [[ "$qa2_str" =~ ^[0-9]+ ]]; then
+                qa2_mess="qa2 is occupied"
+              fi
+
+              qa3_str=$(gh pr list --base qa3)
+              if [[ "$qa3_str" =~ ^[0-9]+ ]]; then
+                qa3_mess="qa3 is occupied"
+              fi
+
+              git fetch origin qa1
+              git checkout qa1
+              log=`git log --oneline --decorate --skip=1 -n 1`
+              count=$(echo $log | grep -o "master" | wc -l | tr -d '[:space:]')
+              if [ "$count" -ne 2 ]; then
+                qa1_mess="qa1 is occupied"
+              fi
+
+              git fetch origin qa2
+              git checkout qa2
+              log=`git log --oneline --decorate --skip=1 -n 1`
+              count=$(echo $log | grep -o "master" | wc -l | tr -d '[:space:]')
+              if [ "$count" -ne 2 ]; then
+                qa2_mess="qa2 is occupied"
+              fi
+              
+              git checkout test/PRtrigger
+
+              my_array=()
+
+              if [ -z "$qa1_mess" ]; then
+                my_array+=("qa1")
+              fi
+
+              if [ -z "$qa2_mess" ]; then
+                my_array+=("qa2")
+              fi
+
+
+              variable=${my_array[@]}
+              echo "full array in variable : $variable "
+              echo "var=$variable" >> "$GITHUB_ENV"
+              echo "var simple github env : $var"
+              echo "var complex github env : ${{env.var}}"
+              echo "cut first word var : $(echo "$var" | sed 's/ .*//')"
+              echo "test=$(echo "$variable" | sed 's/ .*//')" >> "$GITHUB_ENV"
+
+      - name: 'Create PR'
+        if: ${{ env.test != '' }} 
+        id: create-pr
+        env: 
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}      
+        run: |-
+          echo $test
+          echo "${{ env.test }}"
+          gh pr list
+          git branch
+          gh pr create --base "${{ env.test }}" -t "tag test" -b "testiiing"
+
+
+      - name: 'Slack Notification'
+        if: ${{ env.test == '' }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.NA_WEBHOOK_URL }}
+          SLACK_MESSAGE: 'no qa env is present currentlyPost Content :rocket:'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: GitBot
+
+      - name: 'Slack Notification'
+        if: ${{ env.test != '' }} 
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.NA_WEBHOOK_URL }}
+          SLACK_MESSAGE: 'PR IS CREATED with ${{ env.test }}'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: GitBot
