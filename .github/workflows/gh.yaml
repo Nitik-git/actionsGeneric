@@ -8,28 +8,16 @@ on:
 jobs:
   gh:
     runs-on: ubuntu-latest
-    steps:
+    steps: 
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          ref: test-ff-merge
       - name: Check availability of QA
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |-          
-              qa1_str=$(gh pr list --base qa1)
-              if [[ "$qa1_str" =~ ^[0-9]+ ]]; then
-                qa1_mess="qa1 is occupied"
-              fi
-
-              qa2_str=$(gh pr list --base qa2)
-              if [[ "$qa2_str" =~ ^[0-9]+ ]]; then
-                qa2_mess="qa2 is occupied"
-              fi
-
-              qa3_str=$(gh pr list --base qa3)
-              if [[ "$qa3_str" =~ ^[0-9]+ ]]; then
-                qa3_mess="qa3 is occupied"
-              fi
-
-              
-      
-
+          touch fffile.txt
+      - name: merge
+        run: |-
+          git checkout master
+          git merge test-ff-merge -X theirs
+          ls
