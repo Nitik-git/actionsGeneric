@@ -15,8 +15,8 @@ jobs:
           ref: test-ff-merge
       - name: Check tag branch
         run: |-          
-          git tag branch-tag-1
-          git push origin branch-tag-1
+          git tag branch-tag-2
+          git push origin branch-tag-2
       - name: echo branch
         run: |-
           echo "this is: {{ github.ref }}"
