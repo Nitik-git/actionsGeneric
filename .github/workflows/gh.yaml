@@ -15,10 +15,14 @@ jobs:
           ref: test-ff-merge
       - name: Check tag branch
         run: |-          
-          git tag branch-tag-3
-          git push origin branch-tag-3
+          git tag branch-tag-4
+          git push origin branch-tag-4
       - name: echo branch
         run: |-
           echo "this is: ${{ github.ref }}"
+      - name: echo branch
+        run: |-
+          branch_name=$(echo "${{ github.ref }}" | sed 's/refs\/heads\///')
+          echo "The pushed branch is: $branch_name"
 
 
