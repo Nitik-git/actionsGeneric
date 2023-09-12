@@ -17,5 +17,8 @@ jobs:
         run: |-          
           git tag branch-tag-1
           git push origin branch-tag-1
+      - name: echo branch
+        run: |-
+          echo "this is: {{ github.ref }}"
 
 
