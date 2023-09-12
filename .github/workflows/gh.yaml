@@ -2,7 +2,8 @@ name: gh-testing
 
 on:
   push:
-
+    tags:
+      - qa-reset*
 
 jobs:
   gh:
@@ -12,10 +13,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: test-ff-merge
-      - name: Check tag branch
-        run: |-          
-          git tag branch-tag-5
-          git push origin branch-tag-5
       - name: echo branch
         run: |-
           echo "this is: ${{ github.ref }}"
