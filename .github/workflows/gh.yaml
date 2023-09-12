@@ -16,5 +16,5 @@ jobs:
       - name: Check tag branch
         run: |-          
           git tag branch-tag-1
-          git push origin tag
-          
+          git push origin branch-tag-1
+
