@@ -25,7 +25,7 @@ jobs:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_COLOR: '#FF0000'
+          SLACK_COLOR: '#0062ff'
           SLACK_ICON: https://avatars.githubusercontent.com/u/125573010?s=48&v=4
           SLACK_MESSAGE: 'Post Content :rocket:'
           SLACK_TITLE: Post Title
