@@ -26,7 +26,7 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.NA_WEBHOOK_URL }}
-          SLACK_ICON: https://raw.githubusercontent.com/proofio/catalyst-backend/main/docs/images/proof_logo.svg?token=GHSAT0AAAAAACG7MEO2CP6V4A3BPA37OUFSZINHALA
+          SLACK_ICON: https://avatars.githubusercontent.com/u/125573010?s=48&v=4
           SLACK_MESSAGE: 'Post Content :rocket:'
           SLACK_TITLE: Post Title
           SLACK_USERNAME: Proof-qa-alert
