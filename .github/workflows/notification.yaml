@@ -22,7 +22,7 @@ jobs:
       - name: display branch
         run: git branch        
 
-      - name: Slack Notification
+      - name: Slack Notification1
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_COLOR: '#0062ff'
@@ -30,4 +30,12 @@ jobs:
           SLACK_MESSAGE: 'Post Content :rocket:'
           SLACK_TITLE: Post Title
           SLACK_USERNAME: Proof-qa-alert
+          SLACK_WEBHOOK: ${{ secrets.NA_WEBHOOK_URL }}
+
+      - name: Slack Notification2
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_MESSAGE: 'Post Content :rocket:'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: Proof-QA-Alert
           SLACK_WEBHOOK: ${{ secrets.NA_WEBHOOK_URL }}
