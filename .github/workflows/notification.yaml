@@ -26,7 +26,6 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.NA_WEBHOOK_URL }}
-          SLACK_ICON: https://avatars.githubusercontent.com/u/125573010?s=48&v=4
           SLACK_MESSAGE: 'Post Content :rocket:'
           SLACK_TITLE: Post Title
           SLACK_USERNAME: Proof-qa-alert
